@@ -80,15 +80,23 @@ identifica
 lista_parametros returns [ArrayList<String> listaP]
 	:	{ $listaP = new ArrayList<String>(); }
 	id1=ID {//adiciona id1 em listaP}
+		$listaP.put($id1.text);
+	}	
 	(
 	id2=ID {//adiciona id2 em listaP}
+		$listaP.put($id2.text);
+	}
 	)?
 	;
 lista_args returns [ArrayList<Double> listaA]
 	: 	{ $listaA = new ArrayList<Double>(); }
 	t1=termo {//adiciona valor de t1 em listaA}
+		$listaA.put($t1.text);
+	}
 	( 
 	t2=termo {//adiciona valor de t1 em listaA} 
+		$listaA.put($t2.text);
+	}
 	)?
 	;
 termo 	returns [double v]
@@ -96,15 +104,17 @@ termo 	returns [double v]
 	ID 
         { 
            	$v = 0.0;  
+           	
+           	//se ID esta' em ts
+			//$v = valor de ID informado em ts
+			//senao acusa erroGeral e informa variavel nao declarada
            	if (ts.containsKey($ID.text)){
            		$v = ts.get($ID.text);
            	}
            	else{
            		System.out.println ("Erro de variavel nao declarada");
            	}
-			//se ID esta' em ts
-			//$v = valor de ID informado em ts
-			//senao acusa erroGeral e informa variavel nao declarada
+			
         }
 	| ch = chamada {//$v = valor da chamada }
 		$v = $ch.vC; 
