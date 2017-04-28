@@ -100,10 +100,13 @@ termo 	returns [double v]
 			//$v = valor de ID informado em ts
 			//senao acusa erroGeral e informa variavel nao declarada
         }
-	| chamada {//$v = valor da chamada }
+	| ch = chamada {//$v = valor da chamada }
+		$v = $ch.vC; 
+	}
 	| decisao {//$v = valor da decisao }
-	| NUMERO {//$v = valor do NUMERO }
-	| expr {//$v = valor da expressao }
+	| NUMERO {//$v = valor do NUMERO 
+	 $v = Double.parseDouble($NUMERO.text);}
+	| expr {//$v = valor da expressao 
         ;
 expr 	returns [double v]
 	: 
@@ -112,12 +115,13 @@ expr 	returns [double v]
 	(
 	MAIS {//identifica a opcao} 
 	| MENOS {//identifica a opcao}
+	
 	| VEZES {//identifica a opcao}
 	| DIVIDE {//identifica a opcao}
 	) 
 	t1=termo {//v � o valor de t1}
 	t2=termo 
-	{
+	{	
 		//se primeira opcao, soma
 		//se segunda, diminui
 		//se terceira, multiplica
@@ -216,6 +220,9 @@ regra 	returns [boolean bT, double vR]:
 	teste 
 	termo 
 	{ 
+		if (bT == true){
+			
+		}
 		//se bT do teste e' true
 		//	bT e' true
 		//	vR e' igual a v do termo
