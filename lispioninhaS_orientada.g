@@ -96,6 +96,12 @@ termo 	returns [double v]
 	ID 
         { 
            	$v = 0.0;  
+           	if (ts.containsKey($ID.text)){
+           		$v = ts.get($ID.text);
+           	}
+           	else{
+           		System.out.println ("Erro de variavel nao declarada");
+           	}
 			//se ID esta' em ts
 			//$v = valor de ID informado em ts
 			//senao acusa erroGeral e informa variavel nao declarada
@@ -103,10 +109,15 @@ termo 	returns [double v]
 	| ch = chamada {//$v = valor da chamada }
 		$v = $ch.vC; 
 	}
-	| decisao {//$v = valor da decisao }
+	| de = decisao {//$v = valor da decisao }
+		$v = $de.vD; 
+	}
 	| NUMERO {//$v = valor do NUMERO 
-	 $v = Double.parseDouble($NUMERO.text);}
-	| expr {//$v = valor da expressao 
+	 $v = Double.parseDouble($NUMERO.text);
+	}
+	| ex = expr {//$v = valor da expressao 
+		$v = $ex.v;
+	} 
         ;
 expr 	returns [double v]
 	: 
