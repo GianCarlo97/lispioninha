@@ -112,6 +112,7 @@ termo 	returns [double v]
            		$v = ts.get($ID.text);
            	}
            	else{
+           		erroGeral = true;
            		System.out.println ("Erro de variavel nao declarada");
            	}
 			
