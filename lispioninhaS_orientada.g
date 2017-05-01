@@ -205,7 +205,7 @@ chamada	returns [double vC]:
 	(
 	la = lista_args{
 		//pega o numero de argumentos pelo tamanho da listaA
-		$arg = $la.listaA.size();
+		arg = $la.listaA.size();
 	}
 	)?
 	PAR_DIR
@@ -240,19 +240,19 @@ chamada	returns [double vC]:
 	//		pega param1
 	//		se h� mais de um parametros
 	//			pega param2
-           		if(numParam == $arg){
+           		if(numParam == arg){
            	//		se numero de parametros e' zero
-           			if($arg == 0){
+           			if(arg == 0){
            	//			pega vP1 e vP2 diretamente no corpo
            				vP1 = Double.parceDouble(operando1);
            				vP2 = Double.parceDouble(operando2);
            				
-           			}else if($arg > 0){
+           			}else if(arg > 0){
            	//		se numero de argumentos e' maior que zero
 	//			pega vP1 do primeiro argumento
-				vP1 = Double.parseDouble($la.get(0));
-				if($arg > 1){
-					vP2 = Double.parseDouble($la.get(1));
+				vP1 = Double.parseDouble($la.listaA.get(0));
+				if(arg > 1){
+					vP2 = Double.parseDouble($la.listaA.get(1));
 	//			se numero de argumentos e' maior que 1
 	//			pega vP2 do segundo argumento
 				}
@@ -306,7 +306,7 @@ chamada	returns [double vC]:
 		}else if(op.equals($DIVIDE.text)){//	senao se op e' "/" entao vC e' a divisao
 			vC = v1 / v2;
 		}else{//senao detecta erroGeral
-			$erroGeral = true;
+			erroGeral = true;
 			System.out.println("erro geral");
 		}
 	
@@ -412,27 +412,27 @@ teste	returns [boolean bT]:
 	(
 	IGUAL {
 		//identifica a opcao
-		$flag2 = 0;	
+		flag2 = 0;	
 	} 
 	| DIFERENTE {
 		//identifica a opcao
-		$flag2 = 1;	
+		flag2 = 1;	
 	}
 	| MENOR	 {
 		//identifica a opcao
-		$flag2 = 3;		
+		flag2 = 3;		
 	}
 	| MENORIGUAL {
 		//identifica a opcao
-		$flag2 = 4;	
+		flag2 = 4;	
 	}
 	| MAIOR	 {
 		//identifica a opcao
-		$flag2 = 5;	
+		flag2 = 5;	
 	}
 	| MAIORIGUAL {
 		//identifica a opcao
-		$flag2 = 6;	
+		flag2 = 6;	
 	}
 	) 
 	t1=termo 
