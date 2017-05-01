@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g 2017-05-01 18:27:07
+// $ANTLR 3.5.1 /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g 2017-05-01 19:38:18
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -49,8 +49,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = T;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:478:3: ( 't' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:478:5: 't'
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:477:3: ( 't' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:477:5: 't'
 			{
 			match('t'); 
 			}
@@ -69,8 +69,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = NIL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:479:6: ( 'nil' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:479:8: 'nil'
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:478:6: ( 'nil' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:478:8: 'nil'
 			{
 			match("nil"); 
 
@@ -90,8 +90,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = COND;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:480:7: ( 'cond' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:480:9: 'cond'
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:479:7: ( 'cond' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:479:9: 'cond'
 			{
 			match("cond"); 
 
@@ -111,8 +111,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = SETQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:481:7: ( 'setq' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:481:9: 'setq'
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:480:7: ( 'setq' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:480:9: 'setq'
 			{
 			match("setq"); 
 
@@ -132,8 +132,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = DEFUN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:482:8: ( 'defun' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:482:10: 'defun'
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:481:8: ( 'defun' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:481:10: 'defun'
 			{
 			match("defun"); 
 
@@ -153,8 +153,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = PAR_ESQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:483:9: ( '(' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:483:11: '('
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:482:9: ( '(' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:482:11: '('
 			{
 			match('('); 
 			}
@@ -173,8 +173,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = PAR_DIR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:484:9: ( ')' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:484:11: ')'
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:483:9: ( ')' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:483:11: ')'
 			{
 			match(')'); 
 			}
@@ -193,8 +193,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = MAIS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:485:6: ( '+' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:485:8: '+'
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:484:6: ( '+' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:484:8: '+'
 			{
 			match('+'); 
 			}
@@ -213,8 +213,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = MENOS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:486:7: ( '-' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:486:9: '-'
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:485:7: ( '-' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:485:9: '-'
 			{
 			match('-'); 
 			}
@@ -233,8 +233,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = VEZES;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:487:7: ( '*' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:487:9: '*'
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:486:7: ( '*' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:486:9: '*'
 			{
 			match('*'); 
 			}
@@ -253,8 +253,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = DIVIDE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:488:8: ( '/' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:488:10: '/'
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:487:8: ( '/' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:487:10: '/'
 			{
 			match('/'); 
 			}
@@ -273,8 +273,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = IGUAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:489:8: ( '==' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:489:10: '=='
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:488:8: ( '==' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:488:10: '=='
 			{
 			match("=="); 
 
@@ -294,8 +294,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = DIFERENTE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:491:2: ( '!=' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:491:4: '!='
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:490:2: ( '!=' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:490:4: '!='
 			{
 			match("!="); 
 
@@ -315,8 +315,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = MENOR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:492:7: ( '<' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:492:9: '<'
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:491:7: ( '<' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:491:9: '<'
 			{
 			match('<'); 
 			}
@@ -335,8 +335,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = MENORIGUAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:494:2: ( '<=' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:494:4: '<='
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:493:2: ( '<=' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:493:4: '<='
 			{
 			match("<="); 
 
@@ -356,8 +356,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = MAIOR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:495:7: ( '>' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:495:9: '>'
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:494:7: ( '>' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:494:9: '>'
 			{
 			match('>'); 
 			}
@@ -376,8 +376,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = MAIORIGUAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:497:2: ( '>=' )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:497:4: '>='
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:496:2: ( '>=' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:496:4: '>='
 			{
 			match(">="); 
 
@@ -397,8 +397,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:498:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:498:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:497:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:497:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -408,7 +408,7 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:498:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:497:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
 			loop1:
 			while (true) {
 				int alt1=2;
@@ -453,14 +453,14 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = NUMERO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:501:5: ( ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )* | ( '-' )? '.' ( '0' .. '9' )+ | ( '-' )? ( '0' .. '9' )+ )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:500:5: ( ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )* | ( '-' )? '.' ( '0' .. '9' )+ | ( '-' )? ( '0' .. '9' )+ )
 			int alt9=3;
 			alt9 = dfa9.predict(input);
 			switch (alt9) {
 				case 1 :
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:501:9: ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )*
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:500:9: ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )*
 					{
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:501:9: ( '-' )?
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:500:9: ( '-' )?
 					int alt2=2;
 					int LA2_0 = input.LA(1);
 					if ( (LA2_0=='-') ) {
@@ -468,7 +468,7 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 					}
 					switch (alt2) {
 						case 1 :
-							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:501:10: '-'
+							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:500:10: '-'
 							{
 							match('-'); 
 							}
@@ -476,7 +476,7 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 
 					}
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:501:16: ( '0' .. '9' )+
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:500:16: ( '0' .. '9' )+
 					int cnt3=0;
 					loop3:
 					while (true) {
@@ -510,7 +510,7 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 					}
 
 					match('.'); 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:501:32: ( '0' .. '9' )*
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:500:32: ( '0' .. '9' )*
 					loop4:
 					while (true) {
 						int alt4=2;
@@ -542,9 +542,9 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:502:9: ( '-' )? '.' ( '0' .. '9' )+
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:501:9: ( '-' )? '.' ( '0' .. '9' )+
 					{
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:502:9: ( '-' )?
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:501:9: ( '-' )?
 					int alt5=2;
 					int LA5_0 = input.LA(1);
 					if ( (LA5_0=='-') ) {
@@ -552,7 +552,7 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 					}
 					switch (alt5) {
 						case 1 :
-							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:502:10: '-'
+							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:501:10: '-'
 							{
 							match('-'); 
 							}
@@ -561,7 +561,7 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 					}
 
 					match('.'); 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:502:20: ( '0' .. '9' )+
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:501:20: ( '0' .. '9' )+
 					int cnt6=0;
 					loop6:
 					while (true) {
@@ -597,9 +597,9 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:503:9: ( '-' )? ( '0' .. '9' )+
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:502:9: ( '-' )? ( '0' .. '9' )+
 					{
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:503:9: ( '-' )?
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:502:9: ( '-' )?
 					int alt7=2;
 					int LA7_0 = input.LA(1);
 					if ( (LA7_0=='-') ) {
@@ -607,7 +607,7 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 					}
 					switch (alt7) {
 						case 1 :
-							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:503:10: '-'
+							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:502:10: '-'
 							{
 							match('-'); 
 							}
@@ -615,7 +615,7 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 
 					}
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:503:16: ( '0' .. '9' )+
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:502:16: ( '0' .. '9' )+
 					int cnt8=0;
 					loop8:
 					while (true) {
@@ -666,8 +666,8 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:506:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:506:9: ( ' ' | '\\t' | '\\r' | '\\n' )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:505:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:505:9: ( ' ' | '\\t' | '\\r' | '\\n' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -1208,7 +1208,7 @@ public class lispioninhaS_orientadaLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "500:1: NUMERO : ( ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )* | ( '-' )? '.' ( '0' .. '9' )+ | ( '-' )? ( '0' .. '9' )+ );";
+			return "499:1: NUMERO : ( ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )* | ( '-' )? '.' ( '0' .. '9' )+ | ( '-' )? ( '0' .. '9' )+ );";
 		}
 	}
 

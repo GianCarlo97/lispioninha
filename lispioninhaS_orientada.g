@@ -81,12 +81,12 @@ lista_parametros returns [ArrayList<String> listaP]
 	:	{ $listaP = new ArrayList<String>(); }
 	id1=ID {
 		//adiciona id1 em listaP} -- FEITO
-		$listaP.put($id1.text);
+		$listaP.add($id1.text);
 	}	
 	(
 	id2=ID {
 		//adiciona id2 em listaP} -- FEITO
-		$listaP.put($id2.text);
+		$listaP.add($id2.text);
 	}
 	)?
 	;
@@ -94,12 +94,12 @@ lista_args returns [ArrayList<Double> listaA]
 	: 	{ $listaA = new ArrayList<Double>(); }
 	t1=termo {
 		//adiciona valor de t1 em listaA} -- FEITO
-		$listaA.put($t1.text);
+		$listaA.add( $t1.v );
 	}
 	( 
 	t2=termo {
 		//adiciona valor de t1 em listaA} -- FEITO
-		$listaA.put($t2.text);
+		$listaA.add($t2.v);
 	}
 	)?
 	;
@@ -113,7 +113,7 @@ termo 	returns [double v]
 		//$v = valor de ID informado em ts -- FEITO
 		//senao acusa erroGeral e informa variavel nao declarada -- FEITO
            	if (ts.containsKey($ID.text)){
-           		$v = ts.get($ID.text);
+           		$v = ts.get($ID.text).valor;
            	}
            	else{
            		erroGeral = true;
@@ -244,8 +244,8 @@ chamada	returns [double vC]:
            	//		se numero de parametros e' zero
            			if(arg == 0){
            	//			pega vP1 e vP2 diretamente no corpo
-           				vP1 = Double.parceDouble(operando1);
-           				vP2 = Double.parceDouble(operando2);
+           				vP1 = Double.parseDouble(operando1);
+           				vP2 = Double.parseDouble(operando2);
            				
            			}else if(arg > 0){
            	//		se numero de argumentos e' maior que zero
@@ -283,7 +283,7 @@ chamada	returns [double vC]:
 			v1 = vP2;
 	//	senao v1 e' o valor do operando1
 		}else{
-			v1 = Double.parceDouble(operando1);
+			v1 = Double.parseDouble(operando1);
 		}
 	//	se operando2 e' igual a param1 entao v2 = vP1
 		if(operando2 == param1){
@@ -293,7 +293,7 @@ chamada	returns [double vC]:
 			v2 = vp2;
 	//	senao v2 e' o valor do operando2
 		}else{
-			v2 = Double.parceDouble(operando2);
+			v2 = Double.parseDouble(operando2);
 		}
 	//	se op e' "+" entao vC e' a soma
 		if(op.equals($MAIS.text)){
@@ -316,48 +316,47 @@ chamada	returns [double vC]:
 	}
 	}
 	;
-corpo	returns [ArrayList<String> lC]
-	: 
+corpo	returns [ArrayList<String> lC]: 
 	{ $lC = new ArrayList<String>(); }
 	PAR_ESQ 
 	(
 	MAIS {
 		//inclui "+" em lC -- FEITO
-		$1C.put($MAIS.text);
+		1C.add($MAIS.text);
 	}
 	| MENOS {
 		//inclui "-" em lC -- FEITO
-		$1C.put($MENOS.text);
+		$1C.add($MENOS.text);
 	}
 	| VEZES {
 		//inclui "*" em lC -- FEITO
-		$1C.put($VEZES.text);
+		$1C.add($VEZES.text);
 	}
 	| DIVIDE {
 		//inclui "/" em lC -- FEITO
-		$1C.put($DIVIDE.text);			
+		$1C.add($DIVIDE.text);			
 	}
 	) 
 	(
 	id1=ID {
 		//inclui id1 em lC -- FEITO
-		$1C.put($id1.text);
+		$1C.add($id1.text);
 	}
 	|
 	n1=NUMERO {
 		//inclui n1 em lC -- FEITO
-		$1C.put($n1.text);
+		$1C.add($n1.text);
 	}
 	)
 	(
 	id2=ID {
 		//inclui id2 em lC -- FEITO
-		$1C.put($id2.text);			
+		$1C.add($id2.text);			
 	}
 	|
 	n2=NUMERO {
 		//inclui n2 em lC -- FEITO
-		 $1C.put($n2.text);
+		 $1C.add($n2.text);
 	}
 	)
 	PAR_DIR
@@ -371,9 +370,9 @@ decisao	returns [double vD]:
 	re = regra 
 	{ 
 		//se bT de regra e' true e nao e' o primeiro
-		if (re.bT == true && re.vR > 0){
+		if ($re.bT == true && $re.vR > 0){
 			//	vD � igual ao vR da regra
-			vD = $vR.re;
+			$vD = $re.vR;
 			//	detecta que achou o primeiro bT verdadeiro
 			flag = true;
 			
@@ -385,19 +384,19 @@ decisao	returns [double vD]:
 regra 	returns [boolean bT, double vR]:	
 	{
 		//inicializa bT como false e vR como zero
-		bT = false;
-		vR = 0;
+		$bT = false;
+		$vR = 0;
 	}
 	PAR_ESQ 
 	te = teste 
 	ter = termo 
 	{ 
 		//se bT do teste e' true
-		if (te.bT == true){
+		if ($te.bT == true){
 			//	bT e' true
-			bT = true;
+			$bT = true;
 			//	vR e' igual a v do termo
-			vR = $v.ter;
+			$vR = $ter.v;
 		}
 	}
 	PAR_DIR

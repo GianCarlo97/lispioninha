@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g 2017-05-01 18:27:07
+// $ANTLR 3.5.1 /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g 2017-05-01 19:38:18
 
 	package Map;
 	import java.util.HashMap;
@@ -51,8 +51,8 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 
 
 	public static final String[] ruleNames = new String[] {
-		"invalidRule", "prog", "corpo", "expr", "identifica", "regra", "declara_fun", 
-		"chamada", "decisao", "teste", "lista_parametros", "lista_args", "termo"
+		"invalidRule", "lista_parametros", "lista_args", "corpo", "regra", "decisao", 
+		"declara_fun", "prog", "expr", "termo", "chamada", "identifica", "teste"
 	};
 
 	public static final boolean[] decisionCanBacktrack = new boolean[] {
@@ -317,7 +317,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 	// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:60:1: identifica : PAR_ESQ SETQ ID termo PAR_DIR ;
 	public final void identifica() throws RecognitionException {
 		Token ID4=null;
-		ParserRuleReturnScope termo5 =null;
+		double termo5 =0.0;
 
 		try { dbg.enterRule(getGrammarFileName(), "identifica");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
@@ -340,18 +340,18 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 			dbg.location(64,2);
 
 					if (!ts.containsKey((ID4!=null?ID4.getText():null))) {
-						ts.put((ID4!=null?ID4.getText():null),new Atrib((termo5!=null?((lispioninhaS_orientadaParser.termo_return)termo5).v:0.0))); 
+						ts.put((ID4!=null?ID4.getText():null),new Atrib(termo5)); 
 					}
 					else { // VALE A IDENTIFICACAO ATUAL
 					     	Atrib atb = ts.get((ID4!=null?ID4.getText():null));
-			           		atb.valor = (termo5!=null?((lispioninhaS_orientadaParser.termo_return)termo5).v:0.0);
+			           		atb.valor = termo5;
 			       	   		atb.param = null;
 			       			atb.corpo = null;
 			       		}
 				dbg.location(75,2);
 			match(input,PAR_DIR,FOLLOW_PAR_DIR_in_identifica112); dbg.location(76,2);
 
-					if (!erroGeral) System.out.println((ID4!=null?ID4.getText():null) + " = " + (termo5!=null?((lispioninhaS_orientadaParser.termo_return)termo5).v:0.0));
+					if (!erroGeral) System.out.println((ID4!=null?ID4.getText():null) + " = " + termo5);
 				
 			}
 
@@ -402,7 +402,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 			id1=(Token)match(input,ID,FOLLOW_ID_in_lista_parametros136); dbg.location(82,9);
 
 					//adiciona id1 em listaP} -- FEITO
-					listaP.put((id1!=null?id1.getText():null));
+					listaP.add((id1!=null?id1.getText():null));
 				dbg.location(86,2);
 			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:86:2: (id2= ID )?
 			int alt3=2;
@@ -425,7 +425,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					id2=(Token)match(input,ID,FOLLOW_ID_in_lista_parametros147); dbg.location(87,9);
 
 							//adiciona id2 em listaP} -- FEITO
-							listaP.put((id2!=null?id2.getText():null));
+							listaP.add((id2!=null?id2.getText():null));
 						
 					}
 					break;
@@ -464,8 +464,8 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 		ArrayList<Double> listaA = null;
 
 
-		ParserRuleReturnScope t1 =null;
-		ParserRuleReturnScope t2 =null;
+		double t1 =0.0;
+		double t2 =0.0;
 
 		try { dbg.enterRule(getGrammarFileName(), "lista_args");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
@@ -486,7 +486,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 			dbg.location(95,11);
 
 					//adiciona valor de t1 em listaA} -- FEITO
-					listaA.put((t1!=null?input.toString(t1.start,t1.stop):null));
+					listaA.add( t1 );
 				dbg.location(99,2);
 			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:99:2: (t2= termo )?
 			int alt4=2;
@@ -512,7 +512,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					dbg.location(100,11);
 
 							//adiciona valor de t1 em listaA} -- FEITO
-							listaA.put((t2!=null?input.toString(t2.start,t2.stop):null));
+							listaA.add(t2);
 						
 					}
 					break;
@@ -544,16 +544,12 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 	// $ANTLR end "lista_args"
 
 
-	public static class termo_return extends ParserRuleReturnScope {
-		public double v;
-	};
-
 
 	// $ANTLR start "termo"
 	// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:106:1: termo returns [double v] : ( ID |ch= chamada |de= decisao | NUMERO |ex= expr );
-	public final lispioninhaS_orientadaParser.termo_return termo() throws RecognitionException {
-		lispioninhaS_orientadaParser.termo_return retval = new lispioninhaS_orientadaParser.termo_return();
-		retval.start = input.LT(1);
+	public final double termo() throws RecognitionException {
+		double v = 0.0;
+
 
 		Token ID6=null;
 		Token NUMERO7=null;
@@ -634,13 +630,13 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					dbg.location(108,2);
 					ID6=(Token)match(input,ID,FOLLOW_ID_in_termo206); dbg.location(109,9);
 					 
-					           	retval.v = 0.0;  
+					           	v = 0.0;  
 					           	
 					           	//se ID esta' em ts -- FEITO
-							//retval.v = valor de ID informado em ts -- FEITO
+							//v = valor de ID informado em ts -- FEITO
 							//senao acusa erroGeral e informa variavel nao declarada -- FEITO
 					           	if (ts.containsKey((ID6!=null?ID6.getText():null))){
-					           		retval.v = ts.get((ID6!=null?ID6.getText():null));
+					           		v = ts.get((ID6!=null?ID6.getText():null)).valor;
 					           	}
 					           	else{
 					           		erroGeral = true;
@@ -661,8 +657,8 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					state._fsp--;
 					dbg.location(124,17);
 
-							//retval.v = valor da chamada -- FEITO
-							retval.v = ch; 
+							//v = valor da chamada -- FEITO
+							v = ch; 
 						
 					}
 					break;
@@ -677,8 +673,8 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					state._fsp--;
 					dbg.location(128,17);
 
-							//retval.v = valor da decisao -- FEITO
-							retval.v = de; 
+							//v = valor da decisao -- FEITO
+							v = de; 
 						
 					}
 					break;
@@ -690,8 +686,8 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					dbg.location(132,4);
 					NUMERO7=(Token)match(input,NUMERO,FOLLOW_NUMERO_in_termo244); dbg.location(132,11);
 
-							//retval.v = valor do NUMERO -- FEITO
-							 retval.v = Double.parseDouble((NUMERO7!=null?NUMERO7.getText():null)); 
+							//v = valor do NUMERO -- FEITO
+							 v = Double.parseDouble((NUMERO7!=null?NUMERO7.getText():null)); 
 						
 					}
 					break;
@@ -706,15 +702,13 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					state._fsp--;
 					dbg.location(136,14);
 
-							//retval.v = valor da expressao -- FEITO
-							retval.v = ex;
+							//v = valor da expressao -- FEITO
+							v = ex;
 						
 					}
 					break;
 
 			}
-			retval.stop = input.LT(-1);
-
 		}
 		catch (RecognitionException re) {
 			reportError(re);
@@ -732,7 +726,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 			if ( getRuleLevel()==0 ) {dbg.terminate();}
 		}
 
-		return retval;
+		return v;
 	}
 	// $ANTLR end "termo"
 
@@ -744,8 +738,8 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 		double v = 0.0;
 
 
-		ParserRuleReturnScope t1 =null;
-		ParserRuleReturnScope t2 =null;
+		double t1 =0.0;
+		double t2 =0.0;
 
 		try { dbg.enterRule(getGrammarFileName(), "expr");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
@@ -862,7 +856,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 			dbg.location(168,11);
 
 					//v � o valor de t1 -- FEITO
-					v = (t1!=null?((lispioninhaS_orientadaParser.termo_return)t1).v:0.0);
+					v = t1;
 				dbg.location(172,4);
 			pushFollow(FOLLOW_termo_in_expr329);
 			t2=termo();
@@ -871,19 +865,19 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 				
 					//se primeira opcao, soma -- FEITO
 					if (flag == 1){
-						v += (t2!=null?((lispioninhaS_orientadaParser.termo_return)t2).v:0.0);
+						v += t2;
 					}
 					//se segunda, diminui -- FEITO
 					else if (flag == 2){
-						v -= (t2!=null?((lispioninhaS_orientadaParser.termo_return)t2).v:0.0);
+						v -= t2;
 					}
 					//se terceira, multiplica -- FEITO
 					else if (flag == 3){
-						v *= (t2!=null?((lispioninhaS_orientadaParser.termo_return)t2).v:0.0);
+						v *= t2;
 					}
 					//se quarta, divide -- FEITO
 					else if (flag == 4){
-						v /= (t2!=null?((lispioninhaS_orientadaParser.termo_return)t2).v:0.0);
+						v /= t2;
 					}
 				dbg.location(191,2);
 			match(input,PAR_DIR,FOLLOW_PAR_DIR_in_expr336); 
@@ -1011,8 +1005,8 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 			           	//		se numero de parametros e' zero
 			           			if(arg == 0){
 			           	//			pega vP1 e vP2 diretamente no corpo
-			           				vP1 = Double.parceDouble(operando1);
-			           				vP2 = Double.parceDouble(operando2);
+			           				vP1 = Double.parseDouble(operando1);
+			           				vP2 = Double.parseDouble(operando2);
 			           				
 			           			}else if(arg > 0){
 			           	//		se numero de argumentos e' maior que zero
@@ -1050,7 +1044,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 						v1 = vP2;
 				//	senao v1 e' o valor do operando1
 					}else{
-						v1 = Double.parceDouble(operando1);
+						v1 = Double.parseDouble(operando1);
 					}
 				//	se operando2 e' igual a param1 entao v2 = vP1
 					if(operando2 == param1){
@@ -1060,7 +1054,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 						v2 = vp2;
 				//	senao v2 e' o valor do operando2
 					}else{
-						v2 = Double.parceDouble(operando2);
+						v2 = Double.parseDouble(operando2);
 					}
 				//	se op e' "+" entao vC e' a soma
 					if(op.equals($MAIS.text)){
@@ -1128,15 +1122,15 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 		dbg.location(319, 0);
 
 		try {
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:320:2: ( PAR_ESQ ( MAIS | MENOS | VEZES | DIVIDE ) (id1= ID |n1= NUMERO ) (id2= ID |n2= NUMERO ) PAR_DIR )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:319:37: ( PAR_ESQ ( MAIS | MENOS | VEZES | DIVIDE ) (id1= ID |n1= NUMERO ) (id2= ID |n2= NUMERO ) PAR_DIR )
 			dbg.enterAlt(1);
 
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:321:2: PAR_ESQ ( MAIS | MENOS | VEZES | DIVIDE ) (id1= ID |n1= NUMERO ) (id2= ID |n2= NUMERO ) PAR_DIR
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:320:2: PAR_ESQ ( MAIS | MENOS | VEZES | DIVIDE ) (id1= ID |n1= NUMERO ) (id2= ID |n2= NUMERO ) PAR_DIR
 			{
-			dbg.location(321,2);
-			 lC = new ArrayList<String>(); dbg.location(322,2);
-			match(input,PAR_ESQ,FOLLOW_PAR_ESQ_in_corpo400); dbg.location(323,2);
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:323:2: ( MAIS | MENOS | VEZES | DIVIDE )
+			dbg.location(320,2);
+			 lC = new ArrayList<String>(); dbg.location(321,2);
+			match(input,PAR_ESQ,FOLLOW_PAR_ESQ_in_corpo398); dbg.location(322,2);
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:322:2: ( MAIS | MENOS | VEZES | DIVIDE )
 			int alt8=4;
 			try { dbg.enterSubRule(8);
 			try { dbg.enterDecision(8, decisionCanBacktrack[8]);
@@ -1174,60 +1168,60 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:324:2: MAIS
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:323:2: MAIS
 					{
-					dbg.location(324,2);
-					MAIS9=(Token)match(input,MAIS,FOLLOW_MAIS_in_corpo407); dbg.location(324,7);
+					dbg.location(323,2);
+					MAIS9=(Token)match(input,MAIS,FOLLOW_MAIS_in_corpo405); dbg.location(323,7);
 
 							//inclui "+" em lC -- FEITO
-							$1C.put((MAIS9!=null?MAIS9.getText():null));
+							1C.add((MAIS9!=null?MAIS9.getText():null));
 						
 					}
 					break;
 				case 2 :
 					dbg.enterAlt(2);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:328:4: MENOS
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:327:4: MENOS
 					{
-					dbg.location(328,4);
-					MENOS10=(Token)match(input,MENOS,FOLLOW_MENOS_in_corpo414); dbg.location(328,10);
+					dbg.location(327,4);
+					MENOS10=(Token)match(input,MENOS,FOLLOW_MENOS_in_corpo412); dbg.location(327,10);
 
 							//inclui "-" em lC -- FEITO
-							$1C.put((MENOS10!=null?MENOS10.getText():null));
+							$1C.add((MENOS10!=null?MENOS10.getText():null));
 						
 					}
 					break;
 				case 3 :
 					dbg.enterAlt(3);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:332:4: VEZES
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:331:4: VEZES
 					{
-					dbg.location(332,4);
-					VEZES11=(Token)match(input,VEZES,FOLLOW_VEZES_in_corpo421); dbg.location(332,10);
+					dbg.location(331,4);
+					VEZES11=(Token)match(input,VEZES,FOLLOW_VEZES_in_corpo419); dbg.location(331,10);
 
 							//inclui "*" em lC -- FEITO
-							$1C.put((VEZES11!=null?VEZES11.getText():null));
+							$1C.add((VEZES11!=null?VEZES11.getText():null));
 						
 					}
 					break;
 				case 4 :
 					dbg.enterAlt(4);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:336:4: DIVIDE
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:335:4: DIVIDE
 					{
-					dbg.location(336,4);
-					DIVIDE12=(Token)match(input,DIVIDE,FOLLOW_DIVIDE_in_corpo428); dbg.location(336,11);
+					dbg.location(335,4);
+					DIVIDE12=(Token)match(input,DIVIDE,FOLLOW_DIVIDE_in_corpo426); dbg.location(335,11);
 
 							//inclui "/" em lC -- FEITO
-							$1C.put((DIVIDE12!=null?DIVIDE12.getText():null));			
+							$1C.add((DIVIDE12!=null?DIVIDE12.getText():null));			
 						
 					}
 					break;
 
 			}
 			} finally {dbg.exitSubRule(8);}
-			dbg.location(341,2);
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:341:2: (id1= ID |n1= NUMERO )
+			dbg.location(340,2);
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:340:2: (id1= ID |n1= NUMERO )
 			int alt9=2;
 			try { dbg.enterSubRule(9);
 			try { dbg.enterDecision(9, decisionCanBacktrack[9]);
@@ -1253,34 +1247,34 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:342:2: id1= ID
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:341:2: id1= ID
 					{
-					dbg.location(342,5);
-					id1=(Token)match(input,ID,FOLLOW_ID_in_corpo442); dbg.location(342,9);
+					dbg.location(341,5);
+					id1=(Token)match(input,ID,FOLLOW_ID_in_corpo440); dbg.location(341,9);
 
 							//inclui id1 em lC -- FEITO
-							$1C.put((id1!=null?id1.getText():null));
+							$1C.add((id1!=null?id1.getText():null));
 						
 					}
 					break;
 				case 2 :
 					dbg.enterAlt(2);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:347:2: n1= NUMERO
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:346:2: n1= NUMERO
 					{
-					dbg.location(347,4);
-					n1=(Token)match(input,NUMERO,FOLLOW_NUMERO_in_corpo452); dbg.location(347,12);
+					dbg.location(346,4);
+					n1=(Token)match(input,NUMERO,FOLLOW_NUMERO_in_corpo450); dbg.location(346,12);
 
 							//inclui n1 em lC -- FEITO
-							$1C.put((n1!=null?n1.getText():null));
+							$1C.add((n1!=null?n1.getText():null));
 						
 					}
 					break;
 
 			}
 			} finally {dbg.exitSubRule(9);}
-			dbg.location(352,2);
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:352:2: (id2= ID |n2= NUMERO )
+			dbg.location(351,2);
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:351:2: (id2= ID |n2= NUMERO )
 			int alt10=2;
 			try { dbg.enterSubRule(10);
 			try { dbg.enterDecision(10, decisionCanBacktrack[10]);
@@ -1306,34 +1300,34 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:353:2: id2= ID
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:352:2: id2= ID
 					{
-					dbg.location(353,5);
-					id2=(Token)match(input,ID,FOLLOW_ID_in_corpo465); dbg.location(353,9);
+					dbg.location(352,5);
+					id2=(Token)match(input,ID,FOLLOW_ID_in_corpo463); dbg.location(352,9);
 
 							//inclui id2 em lC -- FEITO
-							$1C.put((id2!=null?id2.getText():null));			
+							$1C.add((id2!=null?id2.getText():null));			
 						
 					}
 					break;
 				case 2 :
 					dbg.enterAlt(2);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:358:2: n2= NUMERO
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:357:2: n2= NUMERO
 					{
-					dbg.location(358,4);
-					n2=(Token)match(input,NUMERO,FOLLOW_NUMERO_in_corpo475); dbg.location(358,12);
+					dbg.location(357,4);
+					n2=(Token)match(input,NUMERO,FOLLOW_NUMERO_in_corpo473); dbg.location(357,12);
 
 							//inclui n2 em lC -- FEITO
-							 $1C.put((n2!=null?n2.getText():null));
+							 $1C.add((n2!=null?n2.getText():null));
 						
 					}
 					break;
 
 			}
 			} finally {dbg.exitSubRule(10);}
-			dbg.location(363,2);
-			match(input,PAR_DIR,FOLLOW_PAR_DIR_in_corpo483); 
+			dbg.location(362,2);
+			match(input,PAR_DIR,FOLLOW_PAR_DIR_in_corpo481); 
 			}
 
 		}
@@ -1344,7 +1338,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(364, 2);
+		dbg.location(363, 2);
 
 		}
 		finally {
@@ -1360,7 +1354,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 
 
 	// $ANTLR start "decisao"
-	// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:365:1: decisao returns [double vD] : PAR_ESQ COND (re= regra )+ PAR_DIR ;
+	// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:364:1: decisao returns [double vD] : PAR_ESQ COND (re= regra )+ PAR_DIR ;
 	public final double decisao() throws RecognitionException {
 		double vD = 0.0;
 
@@ -1370,21 +1364,21 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 		try { dbg.enterRule(getGrammarFileName(), "decisao");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
-		dbg.location(365, 0);
+		dbg.location(364, 0);
 
 		try {
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:365:28: ( PAR_ESQ COND (re= regra )+ PAR_DIR )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:364:28: ( PAR_ESQ COND (re= regra )+ PAR_DIR )
 			dbg.enterAlt(1);
 
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:366:2: PAR_ESQ COND (re= regra )+ PAR_DIR
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:365:2: PAR_ESQ COND (re= regra )+ PAR_DIR
 			{
-			dbg.location(366,2);
+			dbg.location(365,2);
 			//declara variaval flag boolean para achar o primeiro teste true e inicializa false
 					boolean flag = false;
-				dbg.location(369,2);
-			match(input,PAR_ESQ,FOLLOW_PAR_ESQ_in_decisao501); dbg.location(369,10);
-			match(input,COND,FOLLOW_COND_in_decisao503); dbg.location(370,2);
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:370:2: (re= regra )+
+				dbg.location(368,2);
+			match(input,PAR_ESQ,FOLLOW_PAR_ESQ_in_decisao499); dbg.location(368,10);
+			match(input,COND,FOLLOW_COND_in_decisao501); dbg.location(369,2);
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:369:2: (re= regra )+
 			int cnt11=0;
 			try { dbg.enterSubRule(11);
 
@@ -1404,18 +1398,18 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:371:2: re= regra
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:370:2: re= regra
 					{
-					dbg.location(371,5);
-					pushFollow(FOLLOW_regra_in_decisao515);
+					dbg.location(370,5);
+					pushFollow(FOLLOW_regra_in_decisao513);
 					re=regra();
 					state._fsp--;
-					dbg.location(372,2);
+					dbg.location(371,2);
 					 
 							//se bT de regra e' true e nao e' o primeiro
-							if (re.bT == true && re.vR > 0){
+							if ((re!=null?((lispioninhaS_orientadaParser.regra_return)re).bT:false) == true && (re!=null?((lispioninhaS_orientadaParser.regra_return)re).vR:0.0) > 0){
 								//	vD � igual ao vR da regra
-								vD = $vR.re;
+								vD = (re!=null?((lispioninhaS_orientadaParser.regra_return)re).vR:0.0);
 								//	detecta que achou o primeiro bT verdadeiro
 								flag = true;
 								
@@ -1434,8 +1428,8 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 				cnt11++;
 			}
 			} finally {dbg.exitSubRule(11);}
-			dbg.location(383,2);
-			match(input,PAR_DIR,FOLLOW_PAR_DIR_in_decisao527); 
+			dbg.location(382,2);
+			match(input,PAR_DIR,FOLLOW_PAR_DIR_in_decisao525); 
 			}
 
 		}
@@ -1446,7 +1440,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(384, 1);
+		dbg.location(383, 1);
 
 		}
 		finally {
@@ -1467,50 +1461,50 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 
 
 	// $ANTLR start "regra"
-	// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:385:1: regra returns [boolean bT, double vR] : PAR_ESQ te= teste ter= termo PAR_DIR ;
+	// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:384:1: regra returns [boolean bT, double vR] : PAR_ESQ te= teste ter= termo PAR_DIR ;
 	public final lispioninhaS_orientadaParser.regra_return regra() throws RecognitionException {
 		lispioninhaS_orientadaParser.regra_return retval = new lispioninhaS_orientadaParser.regra_return();
 		retval.start = input.LT(1);
 
 		boolean te =false;
-		ParserRuleReturnScope ter =null;
+		double ter =0.0;
 
 		try { dbg.enterRule(getGrammarFileName(), "regra");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
-		dbg.location(385, 0);
+		dbg.location(384, 0);
 
 		try {
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:385:39: ( PAR_ESQ te= teste ter= termo PAR_DIR )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:384:39: ( PAR_ESQ te= teste ter= termo PAR_DIR )
 			dbg.enterAlt(1);
 
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:386:2: PAR_ESQ te= teste ter= termo PAR_DIR
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:385:2: PAR_ESQ te= teste ter= termo PAR_DIR
 			{
-			dbg.location(386,2);
+			dbg.location(385,2);
 
 					//inicializa bT como false e vR como zero
-					bT = false;
-					vR = 0;
-				dbg.location(391,2);
-			match(input,PAR_ESQ,FOLLOW_PAR_ESQ_in_regra545); dbg.location(392,5);
-			pushFollow(FOLLOW_teste_in_regra553);
+					retval.bT = false;
+					retval.vR = 0;
+				dbg.location(390,2);
+			match(input,PAR_ESQ,FOLLOW_PAR_ESQ_in_regra543); dbg.location(391,5);
+			pushFollow(FOLLOW_teste_in_regra551);
 			te=teste();
 			state._fsp--;
-			dbg.location(393,6);
-			pushFollow(FOLLOW_termo_in_regra561);
+			dbg.location(392,6);
+			pushFollow(FOLLOW_termo_in_regra559);
 			ter=termo();
 			state._fsp--;
-			dbg.location(394,2);
+			dbg.location(393,2);
 			 
 					//se bT do teste e' true
-					if (te.bT == true){
+					if (te == true){
 						//	bT e' true
-						bT = true;
+						retval.bT = true;
 						//	vR e' igual a v do termo
-						vR = $v.ter;
+						retval.vR = ter;
 					}
-				dbg.location(403,2);
-			match(input,PAR_DIR,FOLLOW_PAR_DIR_in_regra568); 
+				dbg.location(402,2);
+			match(input,PAR_DIR,FOLLOW_PAR_DIR_in_regra566); 
 			}
 
 			retval.stop = input.LT(-1);
@@ -1523,7 +1517,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(404, 1);
+		dbg.location(403, 1);
 
 		}
 		finally {
@@ -1539,21 +1533,21 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 
 
 	// $ANTLR start "teste"
-	// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:405:1: teste returns [boolean bT] : ( PAR_ESQ ( IGUAL | DIFERENTE | MENOR | MENORIGUAL | MAIOR | MAIORIGUAL ) t1= termo t2= termo PAR_DIR | T | NIL );
+	// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:404:1: teste returns [boolean bT] : ( PAR_ESQ ( IGUAL | DIFERENTE | MENOR | MENORIGUAL | MAIOR | MAIORIGUAL ) t1= termo t2= termo PAR_DIR | T | NIL );
 	public final boolean teste() throws RecognitionException {
 		boolean bT = false;
 
 
-		ParserRuleReturnScope t1 =null;
-		ParserRuleReturnScope t2 =null;
+		double t1 =0.0;
+		double t2 =0.0;
 
 		try { dbg.enterRule(getGrammarFileName(), "teste");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
-		dbg.location(405, 0);
+		dbg.location(404, 0);
 
 		try {
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:405:27: ( PAR_ESQ ( IGUAL | DIFERENTE | MENOR | MENORIGUAL | MAIOR | MAIORIGUAL ) t1= termo t2= termo PAR_DIR | T | NIL )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:404:27: ( PAR_ESQ ( IGUAL | DIFERENTE | MENOR | MENORIGUAL | MAIOR | MAIORIGUAL ) t1= termo t2= termo PAR_DIR | T | NIL )
 			int alt13=3;
 			try { dbg.enterDecision(13, decisionCanBacktrack[13]);
 
@@ -1585,16 +1579,16 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:406:2: PAR_ESQ ( IGUAL | DIFERENTE | MENOR | MENORIGUAL | MAIOR | MAIORIGUAL ) t1= termo t2= termo PAR_DIR
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:405:2: PAR_ESQ ( IGUAL | DIFERENTE | MENOR | MENORIGUAL | MAIOR | MAIORIGUAL ) t1= termo t2= termo PAR_DIR
 					{
-					dbg.location(406,2);
-					match(input,PAR_ESQ,FOLLOW_PAR_ESQ_in_teste582); dbg.location(407,2);
+					dbg.location(405,2);
+					match(input,PAR_ESQ,FOLLOW_PAR_ESQ_in_teste580); dbg.location(406,2);
 
 						//declara variaval flag zerada para detectar o operador e inicializa bT como false
 							int flag2;
 							bT = false;
-						dbg.location(412,2);
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:412:2: ( IGUAL | DIFERENTE | MENOR | MENORIGUAL | MAIOR | MAIORIGUAL )
+						dbg.location(411,2);
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:411:2: ( IGUAL | DIFERENTE | MENOR | MENORIGUAL | MAIOR | MAIORIGUAL )
 					int alt12=6;
 					try { dbg.enterSubRule(12);
 					try { dbg.enterDecision(12, decisionCanBacktrack[12]);
@@ -1642,10 +1636,10 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 						case 1 :
 							dbg.enterAlt(1);
 
-							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:413:2: IGUAL
+							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:412:2: IGUAL
 							{
-							dbg.location(413,2);
-							match(input,IGUAL,FOLLOW_IGUAL_in_teste592); dbg.location(413,8);
+							dbg.location(412,2);
+							match(input,IGUAL,FOLLOW_IGUAL_in_teste590); dbg.location(412,8);
 
 									//identifica a opcao
 									flag2 = 0;	
@@ -1655,10 +1649,10 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 						case 2 :
 							dbg.enterAlt(2);
 
-							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:417:4: DIFERENTE
+							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:416:4: DIFERENTE
 							{
-							dbg.location(417,4);
-							match(input,DIFERENTE,FOLLOW_DIFERENTE_in_teste600); dbg.location(417,14);
+							dbg.location(416,4);
+							match(input,DIFERENTE,FOLLOW_DIFERENTE_in_teste598); dbg.location(416,14);
 
 									//identifica a opcao
 									flag2 = 1;	
@@ -1668,10 +1662,10 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 						case 3 :
 							dbg.enterAlt(3);
 
-							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:421:4: MENOR
+							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:420:4: MENOR
 							{
-							dbg.location(421,4);
-							match(input,MENOR,FOLLOW_MENOR_in_teste607); dbg.location(421,11);
+							dbg.location(420,4);
+							match(input,MENOR,FOLLOW_MENOR_in_teste605); dbg.location(420,11);
 
 									//identifica a opcao
 									flag2 = 3;		
@@ -1681,10 +1675,10 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 						case 4 :
 							dbg.enterAlt(4);
 
-							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:425:4: MENORIGUAL
+							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:424:4: MENORIGUAL
 							{
-							dbg.location(425,4);
-							match(input,MENORIGUAL,FOLLOW_MENORIGUAL_in_teste615); dbg.location(425,15);
+							dbg.location(424,4);
+							match(input,MENORIGUAL,FOLLOW_MENORIGUAL_in_teste613); dbg.location(424,15);
 
 									//identifica a opcao
 									flag2 = 4;	
@@ -1694,10 +1688,10 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 						case 5 :
 							dbg.enterAlt(5);
 
-							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:429:4: MAIOR
+							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:428:4: MAIOR
 							{
-							dbg.location(429,4);
-							match(input,MAIOR,FOLLOW_MAIOR_in_teste622); dbg.location(429,11);
+							dbg.location(428,4);
+							match(input,MAIOR,FOLLOW_MAIOR_in_teste620); dbg.location(428,11);
 
 									//identifica a opcao
 									flag2 = 5;	
@@ -1707,10 +1701,10 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 						case 6 :
 							dbg.enterAlt(6);
 
-							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:433:4: MAIORIGUAL
+							// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:432:4: MAIORIGUAL
 							{
-							dbg.location(433,4);
-							match(input,MAIORIGUAL,FOLLOW_MAIORIGUAL_in_teste630); dbg.location(433,15);
+							dbg.location(432,4);
+							match(input,MAIORIGUAL,FOLLOW_MAIORIGUAL_in_teste628); dbg.location(432,15);
 
 									//identifica a opcao
 									flag2 = 6;	
@@ -1720,15 +1714,15 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 
 					}
 					} finally {dbg.exitSubRule(12);}
-					dbg.location(438,4);
-					pushFollow(FOLLOW_termo_in_teste641);
+					dbg.location(437,4);
+					pushFollow(FOLLOW_termo_in_teste639);
 					t1=termo();
 					state._fsp--;
-					dbg.location(439,4);
-					pushFollow(FOLLOW_termo_in_teste647);
+					dbg.location(438,4);
+					pushFollow(FOLLOW_termo_in_teste645);
 					t2=termo();
 					state._fsp--;
-					dbg.location(440,2);
+					dbg.location(439,2);
 
 							//se a opcao e' IGUAL entao se ha igualdade entao bT sera true
 							if (flag2 == 0){
@@ -1762,27 +1756,27 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 								bT = true;		
 								}
 							}
-						dbg.location(474,2);
-					match(input,PAR_DIR,FOLLOW_PAR_DIR_in_teste654); 
+						dbg.location(473,2);
+					match(input,PAR_DIR,FOLLOW_PAR_DIR_in_teste652); 
 					}
 					break;
 				case 2 :
 					dbg.enterAlt(2);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:475:4: T
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:474:4: T
 					{
-					dbg.location(475,4);
-					match(input,T,FOLLOW_T_in_teste660); dbg.location(475,6);
+					dbg.location(474,4);
+					match(input,T,FOLLOW_T_in_teste658); dbg.location(474,6);
 					 bT = true; 
 					}
 					break;
 				case 3 :
 					dbg.enterAlt(3);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:476:4: NIL
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:475:4: NIL
 					{
-					dbg.location(476,4);
-					match(input,NIL,FOLLOW_NIL_in_teste667); dbg.location(476,8);
+					dbg.location(475,4);
+					match(input,NIL,FOLLOW_NIL_in_teste665); dbg.location(475,8);
 					 bT = false; 
 					}
 					break;
@@ -1796,7 +1790,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(477, 1);
+		dbg.location(476, 1);
 
 		}
 		finally {
@@ -1849,34 +1843,34 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 	public static final BitSet FOLLOW_ID_in_chamada356 = new BitSet(new long[]{0x00000000000E0100L});
 	public static final BitSet FOLLOW_lista_args_in_chamada370 = new BitSet(new long[]{0x0000000000040000L});
 	public static final BitSet FOLLOW_PAR_DIR_in_chamada378 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PAR_ESQ_in_corpo400 = new BitSet(new long[]{0x0000000000409080L});
-	public static final BitSet FOLLOW_MAIS_in_corpo407 = new BitSet(new long[]{0x0000000000020100L});
-	public static final BitSet FOLLOW_MENOS_in_corpo414 = new BitSet(new long[]{0x0000000000020100L});
-	public static final BitSet FOLLOW_VEZES_in_corpo421 = new BitSet(new long[]{0x0000000000020100L});
-	public static final BitSet FOLLOW_DIVIDE_in_corpo428 = new BitSet(new long[]{0x0000000000020100L});
-	public static final BitSet FOLLOW_ID_in_corpo442 = new BitSet(new long[]{0x0000000000020100L});
-	public static final BitSet FOLLOW_NUMERO_in_corpo452 = new BitSet(new long[]{0x0000000000020100L});
-	public static final BitSet FOLLOW_ID_in_corpo465 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_NUMERO_in_corpo475 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_PAR_DIR_in_corpo483 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PAR_ESQ_in_decisao501 = new BitSet(new long[]{0x0000000000000010L});
-	public static final BitSet FOLLOW_COND_in_decisao503 = new BitSet(new long[]{0x0000000000080000L});
-	public static final BitSet FOLLOW_regra_in_decisao515 = new BitSet(new long[]{0x00000000000C0000L});
-	public static final BitSet FOLLOW_PAR_DIR_in_decisao527 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PAR_ESQ_in_regra545 = new BitSet(new long[]{0x0000000000290000L});
-	public static final BitSet FOLLOW_teste_in_regra553 = new BitSet(new long[]{0x00000000000A0100L});
-	public static final BitSet FOLLOW_termo_in_regra561 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_PAR_DIR_in_regra568 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PAR_ESQ_in_teste582 = new BitSet(new long[]{0x0000000000006E40L});
-	public static final BitSet FOLLOW_IGUAL_in_teste592 = new BitSet(new long[]{0x00000000000A0100L});
-	public static final BitSet FOLLOW_DIFERENTE_in_teste600 = new BitSet(new long[]{0x00000000000A0100L});
-	public static final BitSet FOLLOW_MENOR_in_teste607 = new BitSet(new long[]{0x00000000000A0100L});
-	public static final BitSet FOLLOW_MENORIGUAL_in_teste615 = new BitSet(new long[]{0x00000000000A0100L});
-	public static final BitSet FOLLOW_MAIOR_in_teste622 = new BitSet(new long[]{0x00000000000A0100L});
-	public static final BitSet FOLLOW_MAIORIGUAL_in_teste630 = new BitSet(new long[]{0x00000000000A0100L});
-	public static final BitSet FOLLOW_termo_in_teste641 = new BitSet(new long[]{0x00000000000A0100L});
-	public static final BitSet FOLLOW_termo_in_teste647 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_PAR_DIR_in_teste654 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_T_in_teste660 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NIL_in_teste667 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PAR_ESQ_in_corpo398 = new BitSet(new long[]{0x0000000000409080L});
+	public static final BitSet FOLLOW_MAIS_in_corpo405 = new BitSet(new long[]{0x0000000000020100L});
+	public static final BitSet FOLLOW_MENOS_in_corpo412 = new BitSet(new long[]{0x0000000000020100L});
+	public static final BitSet FOLLOW_VEZES_in_corpo419 = new BitSet(new long[]{0x0000000000020100L});
+	public static final BitSet FOLLOW_DIVIDE_in_corpo426 = new BitSet(new long[]{0x0000000000020100L});
+	public static final BitSet FOLLOW_ID_in_corpo440 = new BitSet(new long[]{0x0000000000020100L});
+	public static final BitSet FOLLOW_NUMERO_in_corpo450 = new BitSet(new long[]{0x0000000000020100L});
+	public static final BitSet FOLLOW_ID_in_corpo463 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_NUMERO_in_corpo473 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_PAR_DIR_in_corpo481 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PAR_ESQ_in_decisao499 = new BitSet(new long[]{0x0000000000000010L});
+	public static final BitSet FOLLOW_COND_in_decisao501 = new BitSet(new long[]{0x0000000000080000L});
+	public static final BitSet FOLLOW_regra_in_decisao513 = new BitSet(new long[]{0x00000000000C0000L});
+	public static final BitSet FOLLOW_PAR_DIR_in_decisao525 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PAR_ESQ_in_regra543 = new BitSet(new long[]{0x0000000000290000L});
+	public static final BitSet FOLLOW_teste_in_regra551 = new BitSet(new long[]{0x00000000000A0100L});
+	public static final BitSet FOLLOW_termo_in_regra559 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_PAR_DIR_in_regra566 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PAR_ESQ_in_teste580 = new BitSet(new long[]{0x0000000000006E40L});
+	public static final BitSet FOLLOW_IGUAL_in_teste590 = new BitSet(new long[]{0x00000000000A0100L});
+	public static final BitSet FOLLOW_DIFERENTE_in_teste598 = new BitSet(new long[]{0x00000000000A0100L});
+	public static final BitSet FOLLOW_MENOR_in_teste605 = new BitSet(new long[]{0x00000000000A0100L});
+	public static final BitSet FOLLOW_MENORIGUAL_in_teste613 = new BitSet(new long[]{0x00000000000A0100L});
+	public static final BitSet FOLLOW_MAIOR_in_teste620 = new BitSet(new long[]{0x00000000000A0100L});
+	public static final BitSet FOLLOW_MAIORIGUAL_in_teste628 = new BitSet(new long[]{0x00000000000A0100L});
+	public static final BitSet FOLLOW_termo_in_teste639 = new BitSet(new long[]{0x00000000000A0100L});
+	public static final BitSet FOLLOW_termo_in_teste645 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_PAR_DIR_in_teste652 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_T_in_teste658 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NIL_in_teste665 = new BitSet(new long[]{0x0000000000000002L});
 }
