@@ -357,7 +357,7 @@ decisao	returns [double vD]:
 	re = regra 
 	{ 
 		//se bT de regra e' true e nao e' o primeiro
-		if (re.bT == true && re.vR > 0){
+		if ($re.bT==true && flag==false){
 			//	vD � igual ao vR da regra
 			vD = $vR.re;
 			//	detecta que achou o primeiro bT verdadeiro
@@ -371,8 +371,8 @@ decisao	returns [double vD]:
 regra 	returns [boolean bT, double vR]:	
 	{
 		//inicializa bT como false e vR como zero
-		bT = false;
-		vR = 0;
+		$bT = false;
+		$vR = 0;
 	}
 	PAR_ESQ 
 	te = teste 
@@ -381,9 +381,9 @@ regra 	returns [boolean bT, double vR]:
 		//se bT do teste e' true
 		if (te.bT == true){
 			//	bT e' true
-			bT = true;
+			$bT = true;
 			//	vR e' igual a v do termo
-			vR = $v.ter;
+			$vR = $v.ter;
 		}
 	}
 	PAR_DIR
