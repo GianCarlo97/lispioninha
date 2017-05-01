@@ -327,31 +327,41 @@ chamada	returns [double vC]:
 	;
 decisao	returns [double vD]: 
 	{//declara variaval flag boolean para achar o primeiro teste true e inicializa false
-		boolean flag = true;
+		boolean flag = false;
 	}
 	PAR_ESQ COND 
 	( 
-	regra 
+	re = regra 
 	{ 
 		//se bT de regra e' true e nao e' o primeiro
-		//	vD � igual ao vR da regra
-		//	detecta que achou o primeiro bT verdadeiro
+		if (re.bT == true && re.vR > 0){
+			//	vD � igual ao vR da regra
+			vD = $vR.re;
+			//	detecta que achou o primeiro bT verdadeiro
+			flag = true;
+			
+		}
 	}
 	)+ 
 	PAR_DIR
 	;
 regra 	returns [boolean bT, double vR]:	
-	{inicializa bT como false e vR como zero}
+	{
+		//inicializa bT como false e vR como zero
+		bT = false;
+		vR = 0;
+	}
 	PAR_ESQ 
-	teste 
-	termo 
+	te = teste 
+	ter = termo 
 	{ 
-		if (bT == true){
-			
-		}
 		//se bT do teste e' true
-		//	bT e' true
-		//	vR e' igual a v do termo
+		if (te.bT == true){
+			//	bT e' true
+			bT = true;
+			//	vR e' igual a v do termo
+			vR = $v.ter;
+		}
 	}
 	PAR_DIR
 	;
