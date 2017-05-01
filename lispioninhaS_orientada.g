@@ -226,9 +226,18 @@ corpo	returns [ArrayList<String> lC]
 chamada	returns [double vC]: 
 	PAR_ESQ 
 	ID 
-	{//declara uma variaval local boolean flag para detectar erro inicializado false e declara uma variaval para contar o numero de argumentos inicializada zerada}
+	{
+	//declara uma variaval local boolean flag para detectar erro inicializado false e declara
+	boolean arg_cont = false; 
+	//uma variaval para contar o numero de argumentos inicializada zerada
+	$arg = 0;
+	
+	}
 	(
-	lista_args {//pega o numero de argumentos pelo tamanho da listaA}
+	la = lista_args{
+		//pega o numero de argumentos pelo tamanho da listaA
+		$arg = $la.size();
+	}
 	)?
 	PAR_DIR
 	{
@@ -246,6 +255,7 @@ chamada	returns [double vC]:
            	$v = ts.get($ID.text);
            	}
 	//	pega op, operando1 e operando2
+		if (op.containsKey(
 	//	se h� parametros
 	//		pega o numero de parametros
 	//		pega param1
