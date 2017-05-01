@@ -79,22 +79,26 @@ identifica
 	;  
 lista_parametros returns [ArrayList<String> listaP]
 	:	{ $listaP = new ArrayList<String>(); }
-	id1=ID {//adiciona id1 em listaP}
+	id1=ID {
+		//adiciona id1 em listaP} -- FEITO
 		$listaP.put($id1.text);
 	}	
 	(
-	id2=ID {//adiciona id2 em listaP}
+	id2=ID {
+		//adiciona id2 em listaP} -- FEITO
 		$listaP.put($id2.text);
 	}
 	)?
 	;
 lista_args returns [ArrayList<Double> listaA]
 	: 	{ $listaA = new ArrayList<Double>(); }
-	t1=termo {//adiciona valor de t1 em listaA}
+	t1=termo {
+		//adiciona valor de t1 em listaA} -- FEITO
 		$listaA.put($t1.text);
 	}
 	( 
-	t2=termo {//adiciona valor de t1 em listaA} 
+	t2=termo {
+		//adiciona valor de t1 em listaA} -- FEITO
 		$listaA.put($t2.text);
 	}
 	)?
@@ -105,9 +109,9 @@ termo 	returns [double v]
         { 
            	$v = 0.0;  
            	
-           	//se ID esta' em ts
-			//$v = valor de ID informado em ts
-			//senao acusa erroGeral e informa variavel nao declarada
+           	//se ID esta' em ts -- FEITO
+		//$v = valor de ID informado em ts -- FEITO
+		//senao acusa erroGeral e informa variavel nao declarada -- FEITO
            	if (ts.containsKey($ID.text)){
            		$v = ts.get($ID.text);
            	}
@@ -117,34 +121,56 @@ termo 	returns [double v]
            	}
 			
         }
-	| ch = chamada {//$v = valor da chamada }
+	| ch = chamada {
+		//$v = valor da chamada -- FEITO
 		$v = $ch.vC; 
 	}
-	| de = decisao {//$v = valor da decisao }
+	| de = decisao {
+		//$v = valor da decisao -- FEITO
 		$v = $de.vD; 
 	}
-	| NUMERO {//$v = valor do NUMERO 
-	 $v = Double.parseDouble($NUMERO.text);
+	| NUMERO {
+		//$v = valor do NUMERO -- FEITO
+		 $v = Double.parseDouble($NUMERO.text); 
 	}
-	| ex = expr {//$v = valor da expressao 
+	| ex = expr {
+		//$v = valor da expressao -- FEITO
 		$v = $ex.v;
 	} 
         ;
 expr 	returns [double v]
 	: 
-	PAR_ESQ 
-	{//declara uma variavel flag para identificar os operadores e inicializa v }
+	PAR_ESQ te = termo
+	{
+		//declara uma variavel flag para identificar os operadores e inicializa v
+		$v = $te.v;
+	}
 	(
-	MAIS {//identifica a opcao} 
-	| MENOS {//identifica a opcao}
+	MAIS tePlus = termo {
+		//identifica a opcao
+		$v += $tePlus.v;
+	} 
+	| MENOS teLess = termo{
+		//identifica a opcao
+		$v -= $teLess.v;
+	}
 	
-	| VEZES {//identifica a opcao}
-	| DIVIDE {//identifica a opcao}
+	| VEZES teMulti = termo{
+		//identifica a opcao
+		$v = $teMulti.t1 * $teMulti.t2.t2;
+	}
+	| DIVIDE teDiv = termo{
+		//identifica a opcao
+		$v /= $teDiv.v;
+	}
 	) 
-	t1=termo {//v � o valor de t1}
+	t1=termo {
+		//v � o valor de t1
+	}
 	t2=termo 
 	{	
 		//se primeira opcao, soma
+		if (
 		//se segunda, diminui
 		//se terceira, multiplica
 		//se quarta, divide
@@ -156,20 +182,44 @@ corpo	returns [ArrayList<String> lC]
 	{ $lC = new ArrayList<String>(); }
 	PAR_ESQ 
 	(
-	MAIS {//inclui "+" em lC}
-	| MENOS {//inclui "-" em lC}
-	| VEZES {//inclui "*" em lC}
-	| DIVIDE {//inclui "/" em lC}
+	MAIS {
+		//inclui "+" em lC
+		$1C.put($MAIS.text);
+	}
+	| MENOS {
+		//inclui "-" em lC
+		$1C.put($MENOS.text);
+	}
+	| VEZES {
+		//inclui "*" em lC
+		$1C.put($VEZES.text);
+	}
+	| DIVIDE {
+		//inclui "/" em lC
+		$1C.put($DIVIDE.text);			
+	}
 	) 
 	(
-	id1=ID {//inclui id1 em lC}
+	id1=ID {
+		//inclui id1 em lC
+		$1C.put($id1.text);
+	}
 	|
-	n1=NUMERO {//inclui n1 em lC}
+	n1=NUMERO {
+		//inclui n1 em lC
+		$1C.put($n1.text);
+	}
 	)
 	(
-	id2=ID {//inclui id2 em lC}
+	id2=ID {
+		//inclui id2 em lC
+		$1C.put($id2.text);			
+	}
 	|
-	n2=NUMERO {//inclui n2 em lC}
+	n2=NUMERO {
+		//inclui n2 em lC
+		 $1C.put($n2.text);
+	}
 	)
 	PAR_DIR
  	;
@@ -190,7 +240,11 @@ chamada	returns [double vC]:
 	String param1="", param2="";
 	int numParam=0;
 	//se ID esta' em ts
-	//	pega o objeto Atrib associado a ID
+	if (ts.containsKey($ID.text)){
+           	
+           	//	pega o objeto Atrib associado a ID
+           	$v = ts.get($ID.text);
+           	}
 	//	pega op, operando1 e operando2
 	//	se h� parametros
 	//		pega o numero de parametros
@@ -265,6 +319,7 @@ teste	returns [boolean bT]:
 	t1=termo 
 	t2=termo 
 	{
+		if (		
 		//se a opcao e' IGUAL entao se ha igualdade entao bT sera true
 		//senao faz o mesmo para cada operador relacional
 	}
