@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g 2017-05-01 19:38:18
+// $ANTLR 3.5.1 /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g 2017-05-01 20:10:57
 
 	package Map;
 	import java.util.HashMap;
@@ -51,8 +51,8 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 
 
 	public static final String[] ruleNames = new String[] {
-		"invalidRule", "lista_parametros", "lista_args", "corpo", "regra", "decisao", 
-		"declara_fun", "prog", "expr", "termo", "chamada", "identifica", "teste"
+		"invalidRule", "decisao", "identifica", "regra", "teste", "chamada", "corpo", 
+		"lista_parametros", "expr", "termo", "declara_fun", "prog", "lista_args"
 	};
 
 	public static final boolean[] decisionCanBacktrack = new boolean[] {
@@ -1011,9 +1011,9 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 			           			}else if(arg > 0){
 			           	//		se numero de argumentos e' maior que zero
 				//			pega vP1 do primeiro argumento
-							vP1 = Double.parseDouble(la.get(0));
+							vP1 = la.get(0);
 							if(arg > 1){
-								vP2 = Double.parseDouble(la.get(1));
+								vP2 = la.get(1);
 				//			se numero de argumentos e' maior que 1
 				//			pega vP2 do segundo argumento
 							}
@@ -1050,21 +1050,21 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					if(operando2 == param1){
 						v2 = vP1;
 				//	senao se operando2 e' igual a param2 entao v2 = vP2
-					}else if(operando == param2){
-						v2 = vp2;
+					}else if(operando2 == param2){
+						v2 = vP2;
 				//	senao v2 e' o valor do operando2
 					}else{
 						v2 = Double.parseDouble(operando2);
 					}
 				//	se op e' "+" entao vC e' a soma
-					if(op.equals($MAIS.text)){
+					if(op.equals("+")){
 						vC = v1 + v2;
-					}else if(op.equals($MENOS.text)){
+					}else if(op.equals("-")){
 					//	senao se op e' "-" entao vC e' a diminuicao
 						vC = v1 - v2;
-					}else if(op.equals($VEZES.text)){//	senao se op e' "*" entao vC e' a produto
+					}else if(op.equals("*")){//	senao se op e' "*" entao vC e' a produto
 						vC = v1 * v2;
-					}else if(op.equals($DIVIDE.text)){//	senao se op e' "/" entao vC e' a divisao
+					}else if(op.equals("/")){//	senao se op e' "/" entao vC e' a divisao
 						vC = v1 / v2;
 					}else{//senao detecta erroGeral
 						erroGeral = true;
@@ -1174,7 +1174,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					MAIS9=(Token)match(input,MAIS,FOLLOW_MAIS_in_corpo405); dbg.location(323,7);
 
 							//inclui "+" em lC -- FEITO
-							1C.add((MAIS9!=null?MAIS9.getText():null));
+							$1C.add((MAIS9!=null?MAIS9.getText():null));
 						
 					}
 					break;
@@ -1354,12 +1354,12 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 
 
 	// $ANTLR start "decisao"
-	// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:364:1: decisao returns [double vD] : PAR_ESQ COND (re= regra )+ PAR_DIR ;
+	// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:364:1: decisao returns [double vD] : PAR_ESQ COND (reg= regra )+ PAR_DIR ;
 	public final double decisao() throws RecognitionException {
 		double vD = 0.0;
 
 
-		ParserRuleReturnScope re =null;
+		ParserRuleReturnScope reg =null;
 
 		try { dbg.enterRule(getGrammarFileName(), "decisao");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
@@ -1367,10 +1367,10 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 		dbg.location(364, 0);
 
 		try {
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:364:28: ( PAR_ESQ COND (re= regra )+ PAR_DIR )
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:364:28: ( PAR_ESQ COND (reg= regra )+ PAR_DIR )
 			dbg.enterAlt(1);
 
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:365:2: PAR_ESQ COND (re= regra )+ PAR_DIR
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:365:2: PAR_ESQ COND (reg= regra )+ PAR_DIR
 			{
 			dbg.location(365,2);
 			//declara variaval flag boolean para achar o primeiro teste true e inicializa false
@@ -1378,7 +1378,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 				dbg.location(368,2);
 			match(input,PAR_ESQ,FOLLOW_PAR_ESQ_in_decisao499); dbg.location(368,10);
 			match(input,COND,FOLLOW_COND_in_decisao501); dbg.location(369,2);
-			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:369:2: (re= regra )+
+			// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:369:2: (reg= regra )+
 			int cnt11=0;
 			try { dbg.enterSubRule(11);
 
@@ -1398,18 +1398,18 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:370:2: re= regra
+					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:370:2: reg= regra
 					{
-					dbg.location(370,5);
+					dbg.location(370,6);
 					pushFollow(FOLLOW_regra_in_decisao513);
-					re=regra();
+					reg=regra();
 					state._fsp--;
 					dbg.location(371,2);
 					 
 							//se bT de regra e' true e nao e' o primeiro
-							if ((re!=null?((lispioninhaS_orientadaParser.regra_return)re).bT:false) == true && (re!=null?((lispioninhaS_orientadaParser.regra_return)re).vR:0.0) > 0){
+							if ((reg!=null?((lispioninhaS_orientadaParser.regra_return)reg).bT:false) == true && (reg!=null?((lispioninhaS_orientadaParser.regra_return)reg).vR:0.0) > 0){
 								//	vD � igual ao vR da regra
-								vD = (re!=null?((lispioninhaS_orientadaParser.regra_return)re).vR:0.0);
+								vD = (reg!=null?((lispioninhaS_orientadaParser.regra_return)reg).vR:0.0);
 								//	detecta que achou o primeiro bT verdadeiro
 								flag = true;
 								

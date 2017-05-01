@@ -250,9 +250,9 @@ chamada	returns [double vC]:
            			}else if(arg > 0){
            	//		se numero de argumentos e' maior que zero
 	//			pega vP1 do primeiro argumento
-				vP1 = Double.parseDouble($la.listaA.get(0));
+				vP1 = $la.listaA.get(0);
 				if(arg > 1){
-					vP2 = Double.parseDouble($la.listaA.get(1));
+					vP2 = $la.listaA.get(1);
 	//			se numero de argumentos e' maior que 1
 	//			pega vP2 do segundo argumento
 				}
@@ -289,21 +289,21 @@ chamada	returns [double vC]:
 		if(operando2 == param1){
 			v2 = vP1;
 	//	senao se operando2 e' igual a param2 entao v2 = vP2
-		}else if(operando == param2){
-			v2 = vp2;
+		}else if(operando2 == param2){
+			v2 = vP2;
 	//	senao v2 e' o valor do operando2
 		}else{
 			v2 = Double.parseDouble(operando2);
 		}
 	//	se op e' "+" entao vC e' a soma
-		if(op.equals($MAIS.text)){
+		if(op.equals("+")){
 			vC = v1 + v2;
-		}else if(op.equals($MENOS.text)){
+		}else if(op.equals("-")){
 		//	senao se op e' "-" entao vC e' a diminuicao
 			vC = v1 - v2;
-		}else if(op.equals($VEZES.text)){//	senao se op e' "*" entao vC e' a produto
+		}else if(op.equals("*")){//	senao se op e' "*" entao vC e' a produto
 			vC = v1 * v2;
-		}else if(op.equals($DIVIDE.text)){//	senao se op e' "/" entao vC e' a divisao
+		}else if(op.equals("/")){//	senao se op e' "/" entao vC e' a divisao
 			vC = v1 / v2;
 		}else{//senao detecta erroGeral
 			erroGeral = true;
@@ -322,7 +322,7 @@ corpo	returns [ArrayList<String> lC]:
 	(
 	MAIS {
 		//inclui "+" em lC -- FEITO
-		1C.add($MAIS.text);
+		$1C.add($MAIS.text);
 	}
 	| MENOS {
 		//inclui "-" em lC -- FEITO
@@ -367,12 +367,12 @@ decisao	returns [double vD]:
 	}
 	PAR_ESQ COND 
 	( 
-	re = regra 
+	reg = regra 
 	{ 
 		//se bT de regra e' true e nao e' o primeiro
-		if ($re.bT == true && $re.vR > 0){
+		if ($reg.bT == true && $reg.vR > 0){
 			//	vD � igual ao vR da regra
-			$vD = $re.vR;
+			$vD = $reg.vR;
 			//	detecta que achou o primeiro bT verdadeiro
 			flag = true;
 			
