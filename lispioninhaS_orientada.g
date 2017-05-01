@@ -190,52 +190,7 @@ expr 	returns [double v]
 	}
 	PAR_DIR
  	;
-corpo	returns [ArrayList<String> lC]
-	: 
-	{ $lC = new ArrayList<String>(); }
-	PAR_ESQ 
-	(
-	MAIS {
-		//inclui "+" em lC -- FEITO
-		$1C.put($MAIS.text);
-	}
-	| MENOS {
-		//inclui "-" em lC -- FEITO
-		$1C.put($MENOS.text);
-	}
-	| VEZES {
-		//inclui "*" em lC -- FEITO
-		$1C.put($VEZES.text);
-	}
-	| DIVIDE {
-		//inclui "/" em lC -- FEITO
-		$1C.put($DIVIDE.text);			
-	}
-	) 
-	(
-	id1=ID {
-		//inclui id1 em lC -- FEITO
-		$1C.put($id1.text);
-	}
-	|
-	n1=NUMERO {
-		//inclui n1 em lC -- FEITO
-		$1C.put($n1.text);
-	}
-	)
-	(
-	id2=ID {
-		//inclui id2 em lC -- FEITO
-		$1C.put($id2.text);			
-	}
-	|
-	n2=NUMERO {
-		//inclui n2 em lC -- FEITO
-		 $1C.put($n2.text);
-	}
-	)
-	PAR_DIR
- 	;
+
 chamada	returns [double vC]: 
 	PAR_ESQ 
 	ID 
@@ -243,14 +198,14 @@ chamada	returns [double vC]:
 	//declara uma variaval local boolean flag para detectar erro inicializado false e declara
 	boolean arg_cont = false; 
 	//uma variaval para contar o numero de argumentos inicializada zerada
-	$arg = 0;
+	int arg = 0;
 	boolean erro_local = false;
 	
 	}
 	(
 	la = lista_args{
 		//pega o numero de argumentos pelo tamanho da listaA
-		$arg = $la.size();
+		$arg = $la.listaA.size();
 	}
 	)?
 	PAR_DIR
@@ -341,13 +296,71 @@ chamada	returns [double vC]:
 			v2 = Double.parceDouble(operando2);
 		}
 	//	se op e' "+" entao vC e' a soma
-	//	senao se op e' "-" entao vC e' a diminuicao
-	//	senao se op e' "*" entao vC e' a produto
-	//	senao se op e' "/" entao vC e' a divisao
+		if(op.equals($MAIS.text)){
+			vC = v1 + v2;
+		}else if(op.equals($MENOS.text)){
+		//	senao se op e' "-" entao vC e' a diminuicao
+			vC = v1 - v2;
+		}else if(op.equals($VEZES.text)){//	senao se op e' "*" entao vC e' a produto
+			vC = v1 * v2;
+		}else if(op.equals($DIVIDE.text)){
+			vC = v1 / v2;
+		}else{
+				 System.out.println("erro geral");
+		}
+	
+	
+		//	senao se op e' "/" entao vC e' a divisao
 	//senao detecta erroGeral
 	}
 	}
 	;
+corpo	returns [ArrayList<String> lC]
+	: 
+	{ $lC = new ArrayList<String>(); }
+	PAR_ESQ 
+	(
+	MAIS {
+		//inclui "+" em lC -- FEITO
+		$1C.put($MAIS.text);
+	}
+	| MENOS {
+		//inclui "-" em lC -- FEITO
+		$1C.put($MENOS.text);
+	}
+	| VEZES {
+		//inclui "*" em lC -- FEITO
+		$1C.put($VEZES.text);
+	}
+	| DIVIDE {
+		//inclui "/" em lC -- FEITO
+		$1C.put($DIVIDE.text);			
+	}
+	) 
+	(
+	id1=ID {
+		//inclui id1 em lC -- FEITO
+		$1C.put($id1.text);
+	}
+	|
+	n1=NUMERO {
+		//inclui n1 em lC -- FEITO
+		$1C.put($n1.text);
+	}
+	)
+	(
+	id2=ID {
+		//inclui id2 em lC -- FEITO
+		$1C.put($id2.text);			
+	}
+	|
+	n2=NUMERO {
+		//inclui n2 em lC -- FEITO
+		 $1C.put($n2.text);
+	}
+	)
+	PAR_DIR
+ 	;
 decisao	returns [double vD]: 
 	{//declara variaval flag boolean para achar o primeiro teste true e inicializa false
 		boolean flag = false;
