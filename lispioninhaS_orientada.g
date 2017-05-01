@@ -265,10 +265,17 @@ chamada	returns [double vC]:
 	if (ts.containsKey($ID.text)){
            	
            	//	pega o objeto Atrib associado a ID
-           	$v = ts.get($ID.text);
+           		Atrib atrib = ts.get($ID.text);
+           		op = atrib.corpo.get(0);
+           		operando1 = atrib.corpo.get(1);
+           		operando1 = atrib.corpo.get(2);
+           		
+           		if(atrib.param.size() > 0){
+           			
+           		}
+           		
            	}
 	//	pega op, operando1 e operando2
-		if (op.containsKey(
 	//	se h� parametros
 	//		pega o numero de parametros
 	//		pega param1
