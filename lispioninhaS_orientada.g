@@ -140,29 +140,29 @@ termo 	returns [double v]
         ;
 expr 	returns [double v]
 	: 
-	PAR_ESQ te = termo
+	PAR_ESQ
 	{
 		//declara uma variavel flag para identificar os operadores e inicializa v -- FEITO
-		$v = $te.v;
-		int flag;
+		$v = 0;
+		int flag = 0;
 	}
 	(
 	MAIS{
 		//identifica a opcao -- FEITO
-		$flag = 1;
+		flag = 1;
 	} 
 	| MENOS{
 		//identifica a opcao -- FEITO
-		$flag = 2;
+		flag = 2;
 	}
 	
 	| VEZES{
 		//identifica a opcao -- FEITO
-		$flag = 3;
+		flag = 3;
 	}
 	| DIVIDE{
 		//identifica a opcao -- FEITO
-		$flag = 4;
+		flag = 4;
 	}
 	) 
 	t1=termo {
@@ -303,15 +303,16 @@ chamada	returns [double vC]:
 			vC = v1 - v2;
 		}else if(op.equals($VEZES.text)){//	senao se op e' "*" entao vC e' a produto
 			vC = v1 * v2;
-		}else if(op.equals($DIVIDE.text)){
+		}else if(op.equals($DIVIDE.text)){//	senao se op e' "/" entao vC e' a divisao
 			vC = v1 / v2;
-		}else{
-				 System.out.println("erro geral");
+		}else{//senao detecta erroGeral
+			$erroGeral = true;
+			System.out.println("erro geral");
 		}
 	
 	
-		//	senao se op e' "/" entao vC e' a divisao
-	//senao detecta erroGeral
+		
+	
 	}
 	}
 	;
@@ -370,7 +371,7 @@ decisao	returns [double vD]:
 	re = regra 
 	{ 
 		//se bT de regra e' true e nao e' o primeiro
-		if ($re.bT==true && flag==false){
+		if (re.bT == true && re.vR > 0){
 			//	vD � igual ao vR da regra
 			vD = $vR.re;
 			//	detecta que achou o primeiro bT verdadeiro
@@ -384,8 +385,8 @@ decisao	returns [double vD]:
 regra 	returns [boolean bT, double vR]:	
 	{
 		//inicializa bT como false e vR como zero
-		$bT = false;
-		$vR = 0;
+		bT = false;
+		vR = 0;
 	}
 	PAR_ESQ 
 	te = teste 
@@ -394,9 +395,9 @@ regra 	returns [boolean bT, double vR]:
 		//se bT do teste e' true
 		if (te.bT == true){
 			//	bT e' true
-			$bT = true;
+			bT = true;
 			//	vR e' igual a v do termo
-			$vR = $v.ter;
+			vR = $v.ter;
 		}
 	}
 	PAR_DIR
