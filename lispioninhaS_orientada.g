@@ -144,22 +144,23 @@ expr 	returns [double v]
 	{
 		//declara uma variavel flag para identificar os operadores e inicializa v
 		$v = $te.v;
+		int flag;
 	}
 	(
-	MAIS tePlus = termo {
+	MAIS{
 		//identifica a opcao
 		$flag = 1;
 	} 
-	| MENOS teLess = termo{
+	| MENOS{
 		//identifica a opcao
 		$flag = 2;
 	}
 	
-	| VEZES teMulti = termo{
+	| VEZES{
 		//identifica a opcao
 		$flag = 3;
 	}
-	| DIVIDE teDiv = termo{
+	| DIVIDE{
 		//identifica a opcao
 		$flag = 4;
 	}
@@ -174,16 +175,18 @@ expr 	returns [double v]
 		if (flag == 1){
 			v += Double.parseDouble($t2.text);
 		}
-
+		//se segunda, diminui
 		else if (flag == 2){
 			v -= Double.parseDouble($t2.text);
 		}
+		//se terceira, multiplica
 		else if (flag == 3){
 			v *= Double.parseDouble($t2.text);
 		}
-		//se segunda, diminui
-		//se terceira, multiplica
 		//se quarta, divide
+		else if (flag == 4){
+			v /= Double.parseDouble($t2.text);
+		}
 	}
 	PAR_DIR
  	;
