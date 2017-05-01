@@ -322,41 +322,41 @@ corpo	returns [ArrayList<String> lC]:
 	(
 	MAIS {
 		//inclui "+" em lC -- FEITO
-		$1C.add($MAIS.text);
+		$lC.add($MAIS.text);
 	}
 	| MENOS {
 		//inclui "-" em lC -- FEITO
-		$1C.add($MENOS.text);
+		$lC.add($MENOS.text);
 	}
 	| VEZES {
 		//inclui "*" em lC -- FEITO
-		$1C.add($VEZES.text);
+		$lC.add($VEZES.text);
 	}
 	| DIVIDE {
 		//inclui "/" em lC -- FEITO
-		$1C.add($DIVIDE.text);			
+		$lC.add($DIVIDE.text);			
 	}
 	) 
 	(
 	id1=ID {
 		//inclui id1 em lC -- FEITO
-		$1C.add($id1.text);
+		$lC.add($id1.text);
 	}
 	|
 	n1=NUMERO {
 		//inclui n1 em lC -- FEITO
-		$1C.add($n1.text);
+		$lC.add($n1.text);
 	}
 	)
 	(
 	id2=ID {
 		//inclui id2 em lC -- FEITO
-		$1C.add($id2.text);			
+		$lC.add($id2.text);			
 	}
 	|
 	n2=NUMERO {
 		//inclui n2 em lC -- FEITO
-		 $1C.add($n2.text);
+		 $lC.add($n2.text);
 	}
 	)
 	PAR_DIR
@@ -405,7 +405,7 @@ teste	returns [boolean bT]:
 	PAR_ESQ 
 	{
 	//declara variaval flag zerada para detectar o operador e inicializa bT como false
-		int flag2;
+		int flag2 = 0;
 		bT = false;
 	}
 	(

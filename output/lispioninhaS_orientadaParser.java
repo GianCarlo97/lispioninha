@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g 2017-05-01 20:10:57
+// $ANTLR 3.5.1 /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g 2017-05-01 20:22:20
 
 	package Map;
 	import java.util.HashMap;
@@ -51,8 +51,8 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 
 
 	public static final String[] ruleNames = new String[] {
-		"invalidRule", "decisao", "identifica", "regra", "teste", "chamada", "corpo", 
-		"lista_parametros", "expr", "termo", "declara_fun", "prog", "lista_args"
+		"invalidRule", "decisao", "expr", "termo", "regra", "corpo", "lista_parametros", 
+		"identifica", "lista_args", "prog", "chamada", "teste", "declara_fun"
 	};
 
 	public static final boolean[] decisionCanBacktrack = new boolean[] {
@@ -1174,7 +1174,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					MAIS9=(Token)match(input,MAIS,FOLLOW_MAIS_in_corpo405); dbg.location(323,7);
 
 							//inclui "+" em lC -- FEITO
-							$1C.add((MAIS9!=null?MAIS9.getText():null));
+							lC.add((MAIS9!=null?MAIS9.getText():null));
 						
 					}
 					break;
@@ -1187,7 +1187,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					MENOS10=(Token)match(input,MENOS,FOLLOW_MENOS_in_corpo412); dbg.location(327,10);
 
 							//inclui "-" em lC -- FEITO
-							$1C.add((MENOS10!=null?MENOS10.getText():null));
+							lC.add((MENOS10!=null?MENOS10.getText():null));
 						
 					}
 					break;
@@ -1200,7 +1200,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					VEZES11=(Token)match(input,VEZES,FOLLOW_VEZES_in_corpo419); dbg.location(331,10);
 
 							//inclui "*" em lC -- FEITO
-							$1C.add((VEZES11!=null?VEZES11.getText():null));
+							lC.add((VEZES11!=null?VEZES11.getText():null));
 						
 					}
 					break;
@@ -1213,7 +1213,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					DIVIDE12=(Token)match(input,DIVIDE,FOLLOW_DIVIDE_in_corpo426); dbg.location(335,11);
 
 							//inclui "/" em lC -- FEITO
-							$1C.add((DIVIDE12!=null?DIVIDE12.getText():null));			
+							lC.add((DIVIDE12!=null?DIVIDE12.getText():null));			
 						
 					}
 					break;
@@ -1253,7 +1253,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					id1=(Token)match(input,ID,FOLLOW_ID_in_corpo440); dbg.location(341,9);
 
 							//inclui id1 em lC -- FEITO
-							$1C.add((id1!=null?id1.getText():null));
+							lC.add((id1!=null?id1.getText():null));
 						
 					}
 					break;
@@ -1266,7 +1266,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					n1=(Token)match(input,NUMERO,FOLLOW_NUMERO_in_corpo450); dbg.location(346,12);
 
 							//inclui n1 em lC -- FEITO
-							$1C.add((n1!=null?n1.getText():null));
+							lC.add((n1!=null?n1.getText():null));
 						
 					}
 					break;
@@ -1306,7 +1306,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					id2=(Token)match(input,ID,FOLLOW_ID_in_corpo463); dbg.location(352,9);
 
 							//inclui id2 em lC -- FEITO
-							$1C.add((id2!=null?id2.getText():null));			
+							lC.add((id2!=null?id2.getText():null));			
 						
 					}
 					break;
@@ -1319,7 +1319,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					n2=(Token)match(input,NUMERO,FOLLOW_NUMERO_in_corpo473); dbg.location(357,12);
 
 							//inclui n2 em lC -- FEITO
-							 $1C.add((n2!=null?n2.getText():null));
+							 lC.add((n2!=null?n2.getText():null));
 						
 					}
 					break;
@@ -1585,7 +1585,7 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 					match(input,PAR_ESQ,FOLLOW_PAR_ESQ_in_teste580); dbg.location(406,2);
 
 						//declara variaval flag zerada para detectar o operador e inicializa bT como false
-							int flag2;
+							int flag2 = 0;
 							bT = false;
 						dbg.location(411,2);
 					// /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g:411:2: ( IGUAL | DIFERENTE | MENOR | MENORIGUAL | MAIOR | MAIORIGUAL )
