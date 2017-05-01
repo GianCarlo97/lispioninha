@@ -148,29 +148,39 @@ expr 	returns [double v]
 	(
 	MAIS tePlus = termo {
 		//identifica a opcao
-		$v += $tePlus.v;
+		$flag = 1;
 	} 
 	| MENOS teLess = termo{
 		//identifica a opcao
-		$v -= $teLess.v;
+		$flag = 2;
 	}
 	
 	| VEZES teMulti = termo{
 		//identifica a opcao
-		$v = $teMulti.t1 * $teMulti.t2.t2;
+		$flag = 3;
 	}
 	| DIVIDE teDiv = termo{
 		//identifica a opcao
-		$v /= $teDiv.v;
+		$flag = 4;
 	}
 	) 
 	t1=termo {
 		//v � o valor de t1
+		$v = Double.parseDouble($t1.text);
 	}
 	t2=termo 
 	{	
 		//se primeira opcao, soma
-		if (
+		if (flag == 1){
+			v += Double.parseDouble($t2.text);
+		}
+
+		else if (flag == 2){
+			v -= Double.parseDouble($t2.text);
+		}
+		else if (flag == 3){
+			v *= Double.parseDouble($t2.text);
+		}
 		//se segunda, diminui
 		//se terceira, multiplica
 		//se quarta, divide
