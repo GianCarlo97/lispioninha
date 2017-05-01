@@ -266,28 +266,46 @@ chamada	returns [double vC]:
            	
            	//	pega o objeto Atrib associado a ID
            		Atrib atrib = ts.get($ID.text);
+           		//	pega op, operando1 e operando2
            		op = atrib.corpo.get(0);
            		operando1 = atrib.corpo.get(1);
-           		operando1 = atrib.corpo.get(2);
+           		operando2 = atrib.corpo.get(2);
            		
-           		if(atrib.param.size() > 0){
-           			
-           		}
            		
-           	}
-	//	pega op, operando1 e operando2
-	//	se h� parametros
+           			//	se h� parametros
 	//		pega o numero de parametros
 	//		pega param1
 	//		se h� mais de um parametros
 	//			pega param2
-	//	se numero de argumentos e' igual ao numero de parametros
-	//		se numero de parametros e' zero
-	//			pega vP1 e vP2 diretamente no corpo
-	//		se numero de argumentos e' maior que zero
+           		if(atrib.param.size() == arg){
+           	//		se numero de parametros e' zero
+           			if(arg == 0){
+           	//			pega vP1 e vP2 diretamente no corpo
+           				
+           			}else if(arg > 0){
+           	//		se numero de argumentos e' maior que zero
 	//			pega vP1 do primeiro argumento
-	//		se numero de argumentos e' maior que 1
+				vP1 = Double.parseDouble(la.get(0));
+				if(){
+	//			se numero de argumentos e' maior que 1
 	//			pega vP2 do segundo argumento
+				}
+           			}
+           			arg_cont = true;
+           		}else if(arg == 1){
+           			param1 = atrib.param.get(0);
+           		}else if(arg == 2){
+           			param1 = atrib.param.get(0);
+           			param2 = atrib.param.get(1);
+           		}
+           		
+           		
+           	}
+	
+	//	se numero de argumentos e' igual ao numero de parametros
+	
+	
+	
 	//	senao
 	//		informa chamada com argumentos em numero incorreto e acusa erro local
 	//senao 
