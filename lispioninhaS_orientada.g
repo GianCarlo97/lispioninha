@@ -142,48 +142,48 @@ expr 	returns [double v]
 	: 
 	PAR_ESQ te = termo
 	{
-		//declara uma variavel flag para identificar os operadores e inicializa v
+		//declara uma variavel flag para identificar os operadores e inicializa v -- FEITO
 		$v = $te.v;
 		int flag;
 	}
 	(
 	MAIS{
-		//identifica a opcao
+		//identifica a opcao -- FEITO
 		$flag = 1;
 	} 
 	| MENOS{
-		//identifica a opcao
+		//identifica a opcao -- FEITO
 		$flag = 2;
 	}
 	
 	| VEZES{
-		//identifica a opcao
+		//identifica a opcao -- FEITO
 		$flag = 3;
 	}
 	| DIVIDE{
-		//identifica a opcao
+		//identifica a opcao -- FEITO
 		$flag = 4;
 	}
 	) 
 	t1=termo {
-		//v � o valor de t1
+		//v � o valor de t1 -- FEITO
 		$v = Double.parseDouble($t1.text);
 	}
 	t2=termo 
 	{	
-		//se primeira opcao, soma
+		//se primeira opcao, soma -- FEITO
 		if (flag == 1){
 			v += Double.parseDouble($t2.text);
 		}
-		//se segunda, diminui
+		//se segunda, diminui -- FEITO
 		else if (flag == 2){
 			v -= Double.parseDouble($t2.text);
 		}
-		//se terceira, multiplica
+		//se terceira, multiplica -- FEITO
 		else if (flag == 3){
 			v *= Double.parseDouble($t2.text);
 		}
-		//se quarta, divide
+		//se quarta, divide -- FEITO
 		else if (flag == 4){
 			v /= Double.parseDouble($t2.text);
 		}
@@ -196,41 +196,41 @@ corpo	returns [ArrayList<String> lC]
 	PAR_ESQ 
 	(
 	MAIS {
-		//inclui "+" em lC
+		//inclui "+" em lC -- FEITO
 		$1C.put($MAIS.text);
 	}
 	| MENOS {
-		//inclui "-" em lC
+		//inclui "-" em lC -- FEITO
 		$1C.put($MENOS.text);
 	}
 	| VEZES {
-		//inclui "*" em lC
+		//inclui "*" em lC -- FEITO
 		$1C.put($VEZES.text);
 	}
 	| DIVIDE {
-		//inclui "/" em lC
+		//inclui "/" em lC -- FEITO
 		$1C.put($DIVIDE.text);			
 	}
 	) 
 	(
 	id1=ID {
-		//inclui id1 em lC
+		//inclui id1 em lC -- FEITO
 		$1C.put($id1.text);
 	}
 	|
 	n1=NUMERO {
-		//inclui n1 em lC
+		//inclui n1 em lC -- FEITO
 		$1C.put($n1.text);
 	}
 	)
 	(
 	id2=ID {
-		//inclui id2 em lC
+		//inclui id2 em lC -- FEITO
 		$1C.put($id2.text);			
 	}
 	|
 	n2=NUMERO {
-		//inclui n2 em lC
+		//inclui n2 em lC -- FEITO
 		 $1C.put($n2.text);
 	}
 	)
@@ -330,21 +330,72 @@ regra 	returns [boolean bT, double vR]:
 	;
 teste	returns [boolean bT]:	
 	PAR_ESQ 
-	{//declara variaval flag zerada para detectar o operador e inicializa bT como false}
+	{
+	//declara variaval flag zerada para detectar o operador e inicializa bT como false
+		int flag2;
+		bT = false;
+	}
 	(
-	IGUAL {//identifica a opcao} 
-	| DIFERENTE {//identifica a opcao}
-	| MENOR	 {//identifica a opcao}
-	| MENORIGUAL {//identifica a opcao}
-	| MAIOR	 {//identifica a opcao}
-	| MAIORIGUAL {//identifica a opcao}
+	IGUAL {
+		//identifica a opcao
+		$flag2 = 0;	
+	} 
+	| DIFERENTE {
+		//identifica a opcao
+		$flag2 = 1;	
+	}
+	| MENOR	 {
+		//identifica a opcao
+		$flag2 = 3;		
+	}
+	| MENORIGUAL {
+		//identifica a opcao
+		$flag2 = 4;	
+	}
+	| MAIOR	 {
+		//identifica a opcao
+		$flag2 = 5;	
+	}
+	| MAIORIGUAL {
+		//identifica a opcao
+		$flag2 = 6;	
+	}
 	) 
 	t1=termo 
 	t2=termo 
 	{
-		if (		
 		//se a opcao e' IGUAL entao se ha igualdade entao bT sera true
+		if (flag2 == 0){
+			if (t1 == t2){
+			bT = true;		
+			}
+		}
 		//senao faz o mesmo para cada operador relacional
+		else if (flag2 == 1){
+			if (t1 == t2){
+			bT = true;		
+			}
+		}
+		else if (flag2 == 3){
+			if (t1 == t2){
+			bT = true;		
+			}
+		}	
+		else if (flag2 == 4){
+			if (t1 == t2){
+			bT = true;		
+			}
+		}
+		else if (flag2 == 5){
+			if (t1 == t2){
+			bT = true;		
+			}
+		}
+		else if (flag2 == 6){
+			if (t1 == t2){
+			bT = true;		
+			}
+		}
 	}
 	PAR_DIR 
 	| T { $bT = true; }
