@@ -244,6 +244,7 @@ chamada	returns [double vC]:
 	boolean arg_cont = false; 
 	//uma variaval para contar o numero de argumentos inicializada zerada
 	$arg = 0;
+	boolean erro_local = false;
 	
 	}
 	(
@@ -274,55 +275,77 @@ chamada	returns [double vC]:
            		
            			//	se h� parametros
 	//		pega o numero de parametros
+		numParam = atrib.param.size();
+		if(numParam > 0){
+			param1 = atrib.param.get(0);
+			if(numParam > 1){
+				param2 = atrib.param.get(1);
+			}
+		}
 	//		pega param1
 	//		se h� mais de um parametros
 	//			pega param2
-           		if(atrib.param.size() == arg){
+           		if(numParam == $arg){
            	//		se numero de parametros e' zero
-           			if(arg == 0){
+           			if($arg == 0){
            	//			pega vP1 e vP2 diretamente no corpo
+           				vP1 = Double.parceDouble(operando1);
+           				vP2 = Double.parceDouble(operando2);
            				
-           			}else if(arg > 0){
+           			}else if($arg > 0){
            	//		se numero de argumentos e' maior que zero
 	//			pega vP1 do primeiro argumento
-				vP1 = Double.parseDouble(la.get(0));
-				if(){
+				vP1 = Double.parseDouble($la.get(0));
+				if($arg > 1){
+					vP2 = Double.parseDouble($la.get(1));
 	//			se numero de argumentos e' maior que 1
 	//			pega vP2 do segundo argumento
 				}
            			}
+           			
+           		}else{
            			arg_cont = true;
-           		}else if(arg == 1){
-           			param1 = atrib.param.get(0);
-           		}else if(arg == 2){
-           			param1 = atrib.param.get(0);
-           			param2 = atrib.param.get(1);
            		}
            		
            		
-           	}
-	
-	//	se numero de argumentos e' igual ao numero de parametros
-	
-	
-	
-	//	senao
-	//		informa chamada com argumentos em numero incorreto e acusa erro local
-	//senao 
+           	//senao 
 	//	informa funcao nao definida e acusa erro local
+           	}else{
+           		System.out.println("erro local funcao nao definida");
+           		erro_local = true;
+           	}
+
+	
 	// AVALIAR O CORPO DA FUNCAO SE NAO HOUVER ERRO
 	//se nao ha erro local
+	if(!erro_local){
 	//	se operando1 e' igual a param1 entao v1 = vP1
+		if(operando1 == param1){
+			v1 = vP1;
+		
 	//	senao se operando1 e' igual a param2 entao v1 = vP2
+		}else if(operando1 == param2){
+			v1 = vP2;
 	//	senao v1 e' o valor do operando1
+		}else{
+			v1 = Double.parceDouble(operando1);
+		}
 	//	se operando2 e' igual a param1 entao v2 = vP1
+		if(operando2 == param1){
+			v2 = vP1;
 	//	senao se operando2 e' igual a param2 entao v2 = vP2
+		}else if(operando == param2){
+			v2 = vp2;
 	//	senao v2 e' o valor do operando2
+		}else{
+			v2 = Double.parceDouble(operando2);
+		}
 	//	se op e' "+" entao vC e' a soma
 	//	senao se op e' "-" entao vC e' a diminuicao
 	//	senao se op e' "*" entao vC e' a produto
 	//	senao se op e' "/" entao vC e' a divisao
 	//senao detecta erroGeral
+	}
 	}
 	;
 decisao	returns [double vD]: 
