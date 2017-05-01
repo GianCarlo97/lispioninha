@@ -167,25 +167,25 @@ expr 	returns [double v]
 	) 
 	t1=termo {
 		//v � o valor de t1 -- FEITO
-		$v = Double.parseDouble($t1.text);
+		$v = $t1.v;
 	}
 	t2=termo 
 	{	
 		//se primeira opcao, soma -- FEITO
 		if (flag == 1){
-			v += Double.parseDouble($t2.text);
+			v += $t2.v;
 		}
 		//se segunda, diminui -- FEITO
 		else if (flag == 2){
-			v -= Double.parseDouble($t2.text);
+			v -= $t2.v;
 		}
 		//se terceira, multiplica -- FEITO
 		else if (flag == 3){
-			v *= Double.parseDouble($t2.text);
+			v *= $t2.v;
 		}
 		//se quarta, divide -- FEITO
 		else if (flag == 4){
-			v /= Double.parseDouble($t2.text);
+			v /= $t2.v;
 		}
 	}
 	PAR_DIR
@@ -326,7 +326,9 @@ chamada	returns [double vC]:
 	}
 	;
 decisao	returns [double vD]: 
-	{//declara variaval flag boolean para achar o primeiro teste true e inicializa false}
+	{//declara variaval flag boolean para achar o primeiro teste true e inicializa false
+		boolean flag = true;
+	}
 	PAR_ESQ COND 
 	( 
 	regra 
