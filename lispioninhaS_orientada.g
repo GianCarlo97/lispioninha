@@ -275,21 +275,21 @@ chamada	returns [double vC]:
 	//se nao ha erro local
 	if(!erro_local){
 	//	se operando1 e' igual a param1 entao v1 = vP1
-		if(operando1 == param1){
+		if(operando1.equals(param1)){
 			v1 = vP1;
 		
 	//	senao se operando1 e' igual a param2 entao v1 = vP2
-		}else if(operando1 == param2){
+		}else if(operando1.equals(param2)){
 			v1 = vP2;
 	//	senao v1 e' o valor do operando1
 		}else{
 			v1 = Double.parseDouble(operando1);
 		}
 	//	se operando2 e' igual a param1 entao v2 = vP1
-		if(operando2 == param1){
+		if(operando2.equals(param1)){
 			v2 = vP1;
 	//	senao se operando2 e' igual a param2 entao v2 = vP2
-		}else if(operando2 == param2){
+		}else if(operando2.equals(param2)){
 			v2 = vP2;
 	//	senao v2 e' o valor do operando2
 		}else{

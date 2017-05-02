@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g 2017-05-01 20:22:20
+// $ANTLR 3.5.1 /home/gian/Programs/Antlrworks/trabalho/lispioninha/lispioninhaS_orientada.g 2017-05-01 21:12:51
 
 	package Map;
 	import java.util.HashMap;
@@ -51,8 +51,9 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 
 
 	public static final String[] ruleNames = new String[] {
-		"invalidRule", "decisao", "expr", "termo", "regra", "corpo", "lista_parametros", 
-		"identifica", "lista_args", "prog", "chamada", "teste", "declara_fun"
+		"invalidRule", "termo", "teste", "identifica", "chamada", "declara_fun", 
+		"prog", "lista_parametros", "expr", "corpo", "decisao", "lista_args", 
+		"regra"
 	};
 
 	public static final boolean[] decisionCanBacktrack = new boolean[] {
@@ -1036,21 +1037,21 @@ public class lispioninhaS_orientadaParser extends DebugParser {
 				//se nao ha erro local
 				if(!erro_local){
 				//	se operando1 e' igual a param1 entao v1 = vP1
-					if(operando1 == param1){
+					if(operando1.equals(param1)){
 						v1 = vP1;
 					
 				//	senao se operando1 e' igual a param2 entao v1 = vP2
-					}else if(operando1 == param2){
+					}else if(operando1.equals(param2)){
 						v1 = vP2;
 				//	senao v1 e' o valor do operando1
 					}else{
 						v1 = Double.parseDouble(operando1);
 					}
 				//	se operando2 e' igual a param1 entao v2 = vP1
-					if(operando2 == param1){
+					if(operando2.equals(param1)){
 						v2 = vP1;
 				//	senao se operando2 e' igual a param2 entao v2 = vP2
-					}else if(operando2 == param2){
+					}else if(operando2.equals(param2)){
 						v2 = vP2;
 				//	senao v2 e' o valor do operando2
 					}else{
